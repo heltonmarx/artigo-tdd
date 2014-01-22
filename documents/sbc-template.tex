@@ -1,0 +1,244 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+\usepackage[brazil]{babel}   
+\usepackage[latin1]{inputenc}  
+
+     
+\sloppy
+
+\title{Workflow de desenvolvimento em C/C++ baseado em TDD. \\Pre-tested commits}
+
+\author{Helton Luiz Marques\inst{1}} 
+
+\address{Univali -- Universidade do Vale do Itaja\'i\\
+		P\'os--Gradua\c{c}\~ao em Qualidade e Engenharia de Software\\
+		Florian\'opolis -- SC -- Brasil
+		\email{helton.marx@gmail.com}
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+  This meta-paper describes the style to be used in articles and short papers
+  for SBC conferences. For papers in English, you should add just an abstract
+  while for the papers in Portuguese, we also ask for an abstract in
+  Portuguese (``resumo''). In both cases, abstracts should not have more than
+  10 lines and must be in the first page of the paper.
+\end{abstract}
+     
+\begin{resumo} 
+  Este meta-artigo descreve o estilo a ser usado na confecção de artigos e
+  resumos de artigos para publica\c{c}\~ao nos anais das conferências organizadas
+  pela SBC. É solicitada a escrita de resumo e abstract apenas para os artigos
+  escritos em português. Artigos em inglês deverão apresentar apenas abstract.
+  Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
+  não ultrapassem 10 linhas cada, sendo que ambos devem estar na primeira
+  página do artigo.
+\end{resumo}
+
+
+\section{Introdu\c{c}\~ao}
+
+A proposta deste trabalho \'e apresentar o conceito de Test Driven Development, 
+os passos que devem ser seguidos para sua implementa\c{c}\~ao, 
+mostrando os benefícios que esta abordagem traz para os desenvolvedores. 
+Apesar da ampla divulga\c{c}\~ao do TDD, notamos que na prática ele ainda é pouco adotado 
+no dia-a-dia dos desenvolvedores por causa do medo que o aprendizado
+e a dificuldade de configurar um sistema cause uma queda de produtividade.
+Com este trabalho pretendemos mostrar solu\c{c}\~oes simples, 
+gratuitas e eficientes que possibilitam, uma vez entendidos os conceitos básicos,  
+tirar proveito de todos os benefícios que um desenvolvimento dirigido a testes proporciona.
+
+\section{Test Driven Development} \label{sec:firstpage}
+
+Test Driven Development (TDD) é uma abordagem iterativa para desenvolvimento de software 
+baseada em testes automatizados. 
+A idéia é aplicar pequenos ciclos de teste-codificação-refatoração, 
+também conhecido como red-green-refactor, conforme a figura abaixo:
+\begin{verbatim}
+	Criar uma imagem de TDD baseado no texto
+\end{verbatim}
+O ciclo indicado na figura acima é repetido, adicionando novo código em cada iteração. 
+A idéia é que a partir destes ciclos o código resultante seja bem estruturado e correto. 
+A cada iteração ciclo adiciona novo código, que apesar de não estar terminado, já foi testado e codificado.\\
+Podemos exemplificar melhor as ações da figura, demostrando-as nos passos abaixo:
+\begin{itemize}
+\item
+Passo 1: Entenda o requisito a ser implementado. Imagine um teste que o forçe a escrever linhas de código que o faça passar.
+\item
+Passo 2 - Vermelho: Crie o teste e o faça falhar. Crie um teste como se o código já existisse e execute-o. 
+A idéia é que esta primeira execução garanta que o código a ser testado está sendo chamado e que ele não vai passar por coincidência.
+\item
+Passo 3 - Verde: Faça o teste passar. Ele deve passar de qualquer jeito, levando em consideração que obrigatoriamente acontecerá sua refatoração
+\item
+Passo 4 - Refatoração: Refatore o código com o objetivo de melhorar a sua estrutura e design. 
+O teste deve ser executado ao fim deste passo e não pode falhar. Enquanto estiver falhando não se pode sair deste passo.
+\item
+Passo 5 - Repita o ciclo: O ciclo deve ser repetido em pequenos incrementos, até que a funcionalidade esteja pronta.
+\end{itemize}
+A idéia principal é que o desenvolvedor deva começar a partir do código mais simples possível, 
+com a garantia que já esteja testado. Assim em cada iteração, a complexidade vai aumentado aos poucos, 
+porém com a certeza que há corretude em cada implementação.\\
+Cada passo traz um benefício. Escrever o teste antes, prática conhecida como Test First, 
+obrigatoriamente força com que o código produzido seja testável por construção, 
+e código testável implica código com baixo acoplamento, aspecto extremamente importante no design de software. 
+E ao escrever testes previamente, faz com que o desenvolvedor pense antecipadamente no comportamento que a 
+aplicação deve ter, antes de mesmo de escrever algum código. 
+Desde a implementação, o projeto terá um nível de qualidade maior, 
+já que esta técnica força pensar em problemas e suas soluções antes de qualquer código existir.\\
+Além disso, traz feedback imediato a cada refatoração, e também suprime o over-engineering, ou seja, \\
+implementar mais do que o estritamente necessário. 
+O feedback acontece a cada ciclo desses, dando uma margem de segurança ao desenvolvedor, 
+de o que está sendo implementado além de correto é necessário. 
+TDD pode ser aplicado tanto para pequenas partes que compõem um sistema (Teste Unitários)
+quanto para componentes (Testes de Integração), e traz benefícios tanto em design quanto em performance, 
+pois dependendo da Arquitetura de Teste aplicada que garanta uma boa cobertura de testes, 
+tem-se um tempo relativamente menor na resolução de falhas do sistema total.\\
+Além de diminuir o custo na fase de manutenção do sistema, 
+oferece também uma margem de segurança maior aos desenvolvedores.\\
+Os testes automatizados também podem funcionar como uma forma de documentação, 
+pois estão descrevendo como partes do sistema se comportam.\\
+TDD é entendido como um dos princípios da Extreme Programming (XP)
+
+\section{Testes Automatizados}
+
+São uma ferramenta extremamente valiosa de feedback, 
+ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
+quanto à qualidade interna (aquela perceptível pelo desenvolvedor).\\
+A facilidade de poder executar continuamente os testes permite a identificação imediata 
+de alterações indesejáveis no sistema. Por essa razão, 
+os testes existentes para um sistema também são conhecidos como Testes de Regressão, 
+pois asseguram que um sistema não irá regredir do ponto atual em que se encontra. 
+O acréscimo contínuo de funcionalidades pode ser realizado sem medo de quebrar algo já estabilizado.\\
+Os testes também favorecem a prática saudável de refatoração, que consiste em aplicar pequenas 
+transformações na estrutura interna do software, preservando o comportamento externo, 
+com o objetivo de melhorar o código, tornando-o mais legível e mais aderente às manutenções pelas quais deverá passar. 
+Entretanto é necessário a busca pelo equilíbrio da refatoração, que deve ser disciplinada para manter a qualidade do código escrito.\\
+Deve-se observar que o Teste Unitário é a base para os Testes de Integração, pois trazem um feedback imediato, 
+encorajando o desenvolvedor a executá-los mais frequentemente, até a execução de todos os testes do sistema em um servidor de integração contínua.\\
+É vital que existam testes automatizados que sejam fáceis e rápidos de serem executados, 
+pois caso contrário, os testes serão executados poucas vezes 
+e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
+
+\section{Test-First e Test-Last}
+
+Há duas abordagens em relação aos teste unitários, 
+que são o Test-First que força que o código de teste seja produzido antes 
+da implementação do algoritmo, e o Test-Last que ao inverso, 
+é a elaboração do teste unitário após a conclusão do algoritmo a ser testado.\\
+\cite{erdogmus:05}, resolveram investigar, por meio de um experimento 
+as diferenças entre as abordagens Test-First e Test-Last. 
+O experimento consiste em dois grupos em meio acadêmico, 
+cada qual usando umas das abordagens. 
+As conclusões foram as seguintes: 
+o grupo Test-First acabou escrevendo 52\% mais testes do que o grupo Test-Last, 
+algo bastante significativo. 
+Em termos de qualidade externa, pelo estudo, não pareceu haver diferença entre os dois métodos. 
+Houveram evidências de que a qualidade externa estaria mais relacionada ao números de testes escritos do que quando estes são escritos. 
+Segundo os autores, apesar do método Test-First por si só não aumenta a qualidade, 
+este pareceu ter um efeito positivo sobre a produtividade dos desenvolvedores, 
+possívelmente por causa dos seguintes fatores:
+
+\begin{itemize}
+\item
+Melhor compreensão do problema. 
+Especificar o teste antes força o desenvolvedor a refletir de maneira mais 
+profunda e completa sobre o problema a ser resolvido. 
+Criar cenários de testes antes ajuda a provar a robustez da solução proposta.
+\item
+Melhor foco na tarefa a ser feita. 
+Existe uma menor carga cognitiva sobre o desenvolvedor, 
+pois ele estará concentrado em resolver apenas uma pequena porção do problema, 
+somente o suficiente para atender o teste existente falhando.
+\item
+Aprendizado mais rápido. 
+O desenvolvedor saberá mais rapidamente se a funcionalidade implementada está de acordo com o esperado. 
+Além disso, existe um critério inequívoco para saber quando o trecho de funcionalidade está realmente pronto.
+\item
+Menos esforço de retrabalho. 
+Em uma abordagem Test-Last, corre-se o risco de pouca refatoração, 
+desenvolvendo a funcionalidade por inteiro, incorrendo em retrabalho 
+à medida que os testes forem criados posteriormente e apontarem outros problemas.
+\end{itemize}
+O estudo demonstra claramente uma qualidade maior ao utilizarmos Test-First, 
+porém deve-se levar em consideração diversos fatores ao selecionar um método, 
+principalmente quando há uma equipe mais experiente que saiba gerar produtividade 
+unindo os dois métodos (Test-First e Test-Last).
+Além disso, o risco da abordagem Test-Last está na perda do benefício da programação por interação, 
+ou seja, evoluir o software a partir do ponto de vista de como se espera que seja usado, 
+e também a ocorrência em demasia de over-engineering, 
+isto é, escrever código para coisas que talvez não sejam necessárias naquele momento. 
+
+\subsection{Subsections}
+
+The subsection titles must be in boldface, 12pt, flush left.
+
+\section{Figures and Captions}\label{sec:figs}
+
+
+Figure and table captions should be centered if less than one line
+(Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
+both margins, as shown in Figure~\ref{fig:exampleFig2}. The caption font must
+be Helvetica, 10 point, boldface, with 6 points of space before and after each
+caption.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.5\textwidth]{fig1.jpg}
+\caption{A typical figure}
+\label{fig:exampleFig1}
+\end{figure}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=.3\textwidth]{fig2.jpg}
+\caption{This figure is an example of a figure caption taking more than one
+  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
+\label{fig:exampleFig2}
+\end{figure}
+
+In tables, try to avoid the use of colored or shaded backgrounds, and avoid
+thick, doubled, or unnecessary framing lines. When reporting empirical data,
+do not use more decimal digits than warranted by their precision and
+reproducibility. Table caption must be placed before the table (see Table 1)
+and the font used must also be Helvetica, 10 point, boldface, with 6 points of
+space before and after each caption.
+
+\begin{table}[ht]
+\centering
+\caption{Variables to be considered on the evaluation of interaction
+  techniques}
+\label{tab:exTable1}
+\includegraphics[width=.7\textwidth]{table.jpg}
+\end{table}
+
+\section{Images}
+
+All images and illustrations should be in black-and-white, or gray tones,
+excepting for the papers that will be electronically available (on CD-ROMs,
+internet, etc.). The image resolution on paper should be about 600 dpi for
+black-and-white images, and 150-300 dpi for grayscale images.  Do not include
+images with excessive resolution, as they may take hours to print, without any
+visible difference in the result. 
+
+\section{Considera\c{c}\~oes e Trabalhos Futuros}
+
+Bibliographic references must be unambiguous and uniform.  We recommend giving
+the author names references in brackets, e.g. \cite{knuth:84},
+\cite{boulic:91}, and \cite{smith:99}.
+
+The references must be listed using 12 point font size, with 6 points of space
+before each reference. The first line of each reference should not be
+indented, while the subsequent should be indented by 0.5 cm.
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}
+
