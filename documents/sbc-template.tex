@@ -34,7 +34,7 @@
      
 \begin{resumo} 
   Este meta-artigo descreve o estilo a ser usado na confecção de artigos e
-  resumos de artigos para publica\c{c}\~ao nos anais das conferências organizadas
+  resumos de artigos para publicação nos anais das conferências organizadas
   pela SBC. É solicitada a escrita de resumo e abstract apenas para os artigos
   escritos em português. Artigos em inglês deverão apresentar apenas abstract.
   Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
@@ -43,15 +43,15 @@
 \end{resumo}
 
 
-\section{Introdu\c{c}\~ao}
+\section{Introdução}
 
-A proposta deste trabalho \'e apresentar o conceito de Test Driven Development, 
-os passos que devem ser seguidos para sua implementa\c{c}\~ao, 
+A proposta deste trabalho é apresentar o conceito de Test Driven Development, 
+os passos que devem ser seguidos para sua implementação, 
 mostrando os benefícios que esta abordagem traz para os desenvolvedores. 
-Apesar da ampla divulga\c{c}\~ao do TDD, notamos que na prática ele ainda é pouco adotado 
+Apesar da ampla divulgação do TDD, notamos que na prática ele ainda é pouco adotado 
 no dia-a-dia dos desenvolvedores por causa do medo que o aprendizado
 e a dificuldade de configurar um sistema cause uma queda de produtividade.
-Com este trabalho pretendemos mostrar solu\c{c}\~oes simples, 
+Com este trabalho pretendemos mostrar soluções simples, 
 gratuitas e eficientes que possibilitam, uma vez entendidos os conceitos básicos,  
 tirar proveito de todos os benefícios que um desenvolvimento dirigido a testes proporciona.
 
@@ -59,41 +59,26 @@ tirar proveito de todos os benefícios que um desenvolvimento dirigido a testes p
 
 Test Driven Development (TDD) é uma abordagem iterativa para desenvolvimento de software 
 baseada em testes automatizados. 
-A idéia é aplicar pequenos ciclos de teste-codificação-refatoração, 
-também conhecido como red-green-refactor, conforme a figura abaixo:
-\begin{verbatim}
-	Criar uma imagem de TDD baseado no texto
-\end{verbatim}
-O ciclo indicado na figura acima é repetido, adicionando novo código em cada iteração. 
-A idéia é que a partir destes ciclos o código resultante seja bem estruturado e correto. 
-A cada iteração ciclo adiciona novo código, que apesar de não estar terminado, já foi testado e codificado.\\
-Podemos exemplificar melhor as ações da figura, demostrando-as nos passos abaixo:
-\begin{itemize}
-\item
-Passo 1: Entenda o requisito a ser implementado. Imagine um teste que o forçe a escrever linhas de código que o faça passar.
-\item
-Passo 2 - Vermelho: Crie o teste e o faça falhar. Crie um teste como se o código já existisse e execute-o. 
-A idéia é que esta primeira execução garanta que o código a ser testado está sendo chamado e que ele não vai passar por coincidência.
-\item
-Passo 3 - Verde: Faça o teste passar. Ele deve passar de qualquer jeito, levando em consideração que obrigatoriamente acontecerá sua refatoração
-\item
-Passo 4 - Refatoração: Refatore o código com o objetivo de melhorar a sua estrutura e design. 
-O teste deve ser executado ao fim deste passo e não pode falhar. Enquanto estiver falhando não se pode sair deste passo.
-\item
-Passo 5 - Repita o ciclo: O ciclo deve ser repetido em pequenos incrementos, até que a funcionalidade esteja pronta.
-\end{itemize}
+A idéia é aplicar pequenos ciclos de teste--codificação--refatoração, 
+também conhecido como \textit{red--green--refactor} que consiste em criar um teste unitário que
+faça falhar o código desenvolvido (\textit{Red}), alterar o código para que o teste passe da
+forma mais simples (\textit{Green}) e refatorar o código com o objetivo de melhorar a sua
+estrutura e design (\textit{Refactor}), eliminando duplicação, deixando o código da melhor
+possível.Este ciclo deve ser repetido em pequenos incrementos, até que a funcionalidade esteja pronta.\\
+Escrever o teste antes, prática conhecida como \textit{test--first}, obrigatoriamente força com que o código
+produzido seja testável por construção, e código produzido seja testável implica código com baixo
+acoplamento, aspecto extremamente importante no desing de software.\\
 A idéia principal é que o desenvolvedor deva começar a partir do código mais simples possível, 
-com a garantia que já esteja testado. Assim em cada iteração, a complexidade vai aumentado aos poucos, 
-porém com a certeza que há corretude em cada implementação.\\
+com a garantia que já esteja testado. Assim em cada iteração, 
+a complexidade vai aumentado aos poucos, porém com a certeza que há corretude em cada implementação.\\
 Cada passo traz um benefício. Escrever o teste antes, prática conhecida como Test First, 
 obrigatoriamente força com que o código produzido seja testável por construção, 
-e código testável implica código com baixo acoplamento, aspecto extremamente importante no design de software. 
-E ao escrever testes previamente, faz com que o desenvolvedor pense antecipadamente no comportamento que a 
+e código testável implica código com baixo acoplamento, aspecto extremamente importante no design de software.\\ 
+Ao escrever testes previamente, faz com que o desenvolvedor pense antecipadamente no comportamento que a 
 aplicação deve ter, antes de mesmo de escrever algum código. 
 Desde a implementação, o projeto terá um nível de qualidade maior, 
 já que esta técnica força pensar em problemas e suas soluções antes de qualquer código existir.\\
-Além disso, traz feedback imediato a cada refatoração, e também suprime o over-engineering, ou seja, \\
-implementar mais do que o estritamente necessário. 
+Além disso, traz feedback imediato a cada refatoração, e também suprime o \textit{over--engineering}, ou seja, implementar mais do que o estritamente necessário.\\
 O feedback acontece a cada ciclo desses, dando uma margem de segurança ao desenvolvedor, 
 de o que está sendo implementado além de correto é necessário. 
 TDD pode ser aplicado tanto para pequenas partes que compõem um sistema (Teste Unitários)
@@ -104,7 +89,7 @@ Além de diminuir o custo na fase de manutenção do sistema,
 oferece também uma margem de segurança maior aos desenvolvedores.\\
 Os testes automatizados também podem funcionar como uma forma de documentação, 
 pois estão descrevendo como partes do sistema se comportam.\\
-TDD é entendido como um dos princípios da Extreme Programming (XP)
+TDD é entendido como um dos princípios da Extreme Programming (XP).
 
 \section{Testes Automatizados}
 
