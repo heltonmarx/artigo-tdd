@@ -33,8 +33,8 @@
      
 \begin{resumo} 
 	A proposta deste trabalho é apresentar o conceito de Test Driven Development,  
-	mostrar os benefícios que esta abordagem traz para os desenvolvedores.
-	É abordado também a revisão de código para análise e busca de falhas no 
+	mostrar os benefícios que esta abordagem traz para os desenvolvedores, e 
+	também apresenta a revisão de código para análise e busca de falhas no 
 	código fonte, quebra na arquitetura do sistema, reimplementação de 
 	funcionalidades já existentes, melhorias de estética e padronização.
 	São apresentados os benefícios da utilização dessas metodologias e 
@@ -73,56 +73,36 @@ Além de diminuir o custo na fase de manutenção do sistema,
 oferece também uma margem de segurança maior aos desenvolvedores.\\
 Os testes automatizados também podem funcionar como uma forma de documentação, 
 pois estão descrevendo em partes o comportamento do sistema, suas interfaces, métodos e arquitetura.\\
-TDD é entendido como um dos princípios da Extreme Programming (XP).
-
-\section{Testes Automatizados}
-
-São uma ferramenta extremamente valiosa de feedback, 
-ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
-quanto à qualidade interna (aquela perceptível pelo desenvolvedor).\\
-A facilidade de poder executar continuamente os testes permite a identificação imediata 
-de alterações indesejáveis no sistema. Por essa razão, 
-os testes existentes para um sistema também são conhecidos como Testes de Regressão, 
-pois asseguram que um sistema não irá regredir do ponto atual em que se encontra. 
-O acréscimo contínuo de funcionalidades pode ser realizado sem medo de quebrar algo já estabilizado.\\
-Os testes também favorecem a prática saudável de refatoração, que consiste em aplicar pequenas 
-transformações na estrutura interna do software, preservando o comportamento externo, 
-com o objetivo de melhorar o código, tornando-o mais legível e mais aderente às manutenções pelas quais deverá passar. 
-Entretanto é necessário a busca pelo equilíbrio da refatoração, que deve ser disciplinada para manter a qualidade do código escrito.\\
-Deve-se observar que o Teste Unitário é a base para os Testes de Integração, pois trazem um feedback imediato, 
-encorajando o desenvolvedor a executá-los mais frequentemente, até a execução de todos os testes do sistema em um servidor de integração contínua.\\
-É vital que existam testes automatizados que sejam fáceis e rápidos de serem executados, 
-pois caso contrário, os testes serão executados poucas vezes 
-e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
-As principais benefícios do TDD são:
+TDD é entendido como um dos princípios da Extreme Programming (XP).\\
+Os principais benefícios do TDD são:
 \begin{itemize}
-\item
-Diminuição de falhas: Erros grandes e pequenos de lógica, 
-e também falhas de design podem ser encontrados rapidamente durante o TDD, 
-ocorrendo a prevenção de defeitos.
-\item
-Menor tempo de debug: Tendo um menor número de falhas, 
-temos um menor tempo de debug.
-\item
-Documentação não mente: Com testes bem estruturados, 
-é possível analisar a qualidade da  documentação 
-Testes bem estruturados trazem uma forma de executável e inequívoca documentação, 
-onde um exemplo funcional equivale mais que 1.000 palavras.
-\item
-Paz de espírito: Um código exaustivamente testado com um conjunto abrangente 
-de testes de regressão traz estabilidade e confiança aos desenvolvedores, 
-trazendo conforto e melhores fins de semana.
-\item
-Aperfeiçoamento do design: Um bom design é um design testável. 
-Funções muito grandes, forte acoplamento, e complexas condicionais, 
-todos levam a um código mais complexo e menos testável. 
-O desenvolver percebem previamente uma falha de design caso os testes não podem ser implementados.
-\item
-Monitorar o progresso: Os testes trazem exatamente um retrato 
-do que está funcionando e quanto do trabalho foi realizado.
-\item
-Feedback imediato: TDD traz imediatamente uma gratificação aos desenvolvedores. 
-A cada codificação testada, traz a garantia de que o software está funcionando.
+	\item
+		Diminuição de falhas: Erros de lógica, e também falhas de design podem ser 
+		encontrados rapidamente durante o TDD, ocorrendo a prevenção de defeitos.
+	\item
+		Menor tempo de debug: Com um menor número de falhas, 
+		obtêm-se um menor tempo de debug.
+	\item
+		A Documentação não mente: Com testes bem estruturados, 
+		é possível analisar a qualidade da documentação 
+		Testes bem estruturados trazem uma forma mais vísivel documentação, 
+		onde um exemplo funcional supri uma documentação excassa.
+	\item
+		Paz de espírito: Um código exaustivamente testado com um conjunto abrangente 
+		de testes de regressão traz estabilidade e confiança aos desenvolvedores, 
+		trazendo conforto e melhores fins de semana.
+	\item
+		Aperfeiçoamento do design: Um bom design é um design testável. 
+		Funções muito grandes, forte acoplamento e condicionais complexas, 
+		levam a um código mais complexo e menos testável. 
+		Os desenvolvedores percebem previamente uma falha de design caso os 
+		testes não possam ser implementados.
+	\item
+		Monitorar o progresso: Os testes trazem exatamente um retrato 
+		do que está funcionando e uma porcentagem real do trabalho realizado.
+	\item
+		Feedback imediato: TDD traz imediatamente uma gratificação aos desenvolvedores. 
+		A cada codificação testada, traz a garantia de que o software está funcionando.
 \end{itemize}
 
 \section{Test-First e Test-Last}
@@ -139,32 +119,34 @@ As conclusões foram as seguintes:
 o grupo \textit{Test-First} acabou escrevendo 52\% mais testes do que o grupo \textit{Test-Last}, 
 algo bastante significativo. 
 Em termos de qualidade externa, pelo estudo, não pareceu haver diferença entre os dois métodos. 
-Houveram evidências de que a qualidade externa estaria mais relacionada ao números de testes escritos do que quando estes são escritos. 
+Houveram evidências de que a qualidade externa estaria mais relacionada 
+ao números de testes escritos do que quando estes são escritos.\\ 
 Segundo os autores, apesar do método Test-First por si só não aumenta a qualidade, 
 este pareceu ter um efeito positivo sobre a produtividade dos desenvolvedores, 
 possívelmente por causa dos seguintes fatores:
 
 \begin{itemize}
-\item
-Melhor compreensão do problema. 
-Especificar o teste antes força o desenvolvedor a refletir de maneira mais 
-profunda e completa sobre o problema a ser resolvido. 
-Criar cenários de testes antes ajuda a provar a robustez da solução proposta.
-\item
-Melhor foco na tarefa a ser feita. 
-Existe uma menor carga cognitiva sobre o desenvolvedor, 
-pois ele estará concentrado em resolver apenas uma pequena porção do problema, 
-somente o suficiente para atender o teste existente falhando.
-\item
-Aprendizado mais rápido. 
-O desenvolvedor saberá mais rapidamente se a funcionalidade implementada está de acordo com o esperado. 
-Além disso, existe um critério inequívoco para saber quando o trecho de funcionalidade está realmente pronto.
-\item
-Menos esforço de retrabalho. 
-Em uma abordagem Test-Last, corre-se o risco de pouca refatoração, 
-desenvolvendo a funcionalidade por inteiro, incorrendo em retrabalho 
-à medida que os testes forem criados posteriormente e apontarem outros problemas.
+	\item
+		Melhor compreensão do problema. 
+		Especificar o teste antes força o desenvolvedor a refletir de maneira mais 
+		profunda e completa sobre o problema a ser resolvido. 
+		Criar cenários de testes antes ajuda a provar a robustez da solução proposta.
+	\item
+		Melhor foco na tarefa a ser feita. 
+		Existe uma menor carga cognitiva sobre o desenvolvedor, 
+		pois ele estará concentrado em resolver apenas uma pequena porção do problema, 
+		somente o suficiente para atender o teste existente falhando.
+	\item
+		Aprendizado mais rápido. 
+		O desenvolvedor saberá mais rapidamente se a funcionalidade implementada está de acordo com o esperado. 
+		Além disso, existe um critério inequívoco para saber quando o trecho de funcionalidade está realmente pronto.
+	\item
+		Menos esforço de retrabalho. 
+		Em uma abordagem Test-Last, corre-se o risco de pouca refatoração, 
+		desenvolvendo a funcionalidade por inteiro, incorrendo em retrabalho 
+		à medida que os testes forem criados posteriormente e apontarem outros problemas.
 \end{itemize}
+
 O estudo demonstra claramente uma qualidade maior ao utilizarmos Test-First, 
 porém deve-se levar em consideração diversos fatores ao selecionar um método, 
 principalmente quando há uma equipe mais experiente que saiba gerar produtividade 
@@ -173,6 +155,27 @@ Além disso, o risco da abordagem Test-Last está na perda do benefício da program
 ou seja, evoluir o software a partir do ponto de vista de como se espera que seja usado, 
 e também a ocorrência em demasia de over-engineering, 
 isto é, escrever código para coisas que talvez não sejam necessárias naquele momento. 
+
+\section{Testes Automatizados}
+
+São uma ferramenta extremamente valiosa de feedback, 
+ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
+quanto à qualidade interna (aquela perceptível pelo desenvolvedor).\\
+A facilidade de poder executar continuamente os testes permite a identificação imediata 
+de alterações indesejáveis no sistema. Por essa razão, 
+os testes existentes para um sistema também são conhecidos como Testes de Regressão, 
+pois asseguram que um sistema não irá regredir do ponto atual em que se encontra. 
+O acréscimo contínuo de funcionalidades pode ser realizado sem medo de quebrar algo já estabilizado.\\
+Os testes também favorecem a prática saudável de refatoração, que consiste em aplicar pequenas 
+transformações na estrutura interna do software, preservando o comportamento externo, 
+com o objetivo de melhorar o código, tornando-o mais legível e mais aderente às manutenções pelas quais deverá passar. 
+Entretanto é necessário a busca pelo equilíbrio da refatoração, que deve ser disciplinada para manter a qualidade do código escrito.\\
+Deve-se observar que o Teste Unitário é a base para os Testes de Integração, pois trazem um feedback imediato, 
+encorajando o desenvolvedor a executá-los mais frequentemente, 
+até a execução de todos os testes do sistema em um servidor de integração contínua.\\      
+É vital que existam testes automatizados que sejam fáceis e rápidos de serem executados, 
+pois caso contrário, os testes serão executados poucas vezes 
+e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
 
 \section{Revisão de código fonte}
 
