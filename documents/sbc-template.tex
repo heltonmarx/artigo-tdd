@@ -13,9 +13,9 @@
 
 \author{Helton Luiz Marques\inst{1}} 
 
-\address{Univali -- Universidade do Vale do Itaja\'i\\
-		P\'os--Gradua\c{c}\~ao em Qualidade e Engenharia de Software\\
-		Florian\'opolis -- SC -- Brasil
+\address{Univali -- Universidade do Vale do Itajaí\\
+		Pós--Graduação em Qualidade e Engenharia de Software\\
+		Florianópolis -- SC -- Brasil
 		\email{helton.marx@gmail.com}
 }
 
@@ -34,9 +34,10 @@
 \begin{resumo} 
 	A proposta deste trabalho é apresentar o conceito de Test Driven Development,  
 	mostrar os benefícios que esta abordagem traz para os desenvolvedores, e 
-	também apresenta a revisão de código para análise e busca de falhas no 
-	código fonte, quebra na arquitetura do sistema, reimplementação de 
-	funcionalidades já existentes, melhorias de estética e padronização.
+	também apresentar a revisão de código para análise e busca de falhas no 
+	código fonte, alterações na arquitetura do sistema, reimplementação de 
+	funcionalidades já existentes, duplicidade de códigos e melhorias de 
+	estética e padronização
 	São apresentados os benefícios da utilização dessas metodologias e 
 	por fim um workflow de desenvolvimento em C/C++ baseado em TDD.
 \end{resumo}
@@ -44,35 +45,39 @@
 
 \section{Introdução}
 
-\textit{Test Driven Development} (TDD) é uma abordagem iterativa para desenvolvimento de software 
-baseada em testes automatizados. 
+\textit{Test Driven Development} (TDD) é uma abordagem iterativa para 
+desenvolvimento de software baseada em testes automatizados. 
 A idéia é aplicar pequenos ciclos de \textbf{teste--codificação--refatoração}, 
-também conhecido como \textit{red--green--refactor} que consiste em criar um teste unitário que
-faça falhar o código desenvolvido (\textit{Red}), alterar o código para que o teste passe da
-forma mais simples (\textit{Green}) e refatorar o código com o objetivo de melhorar a sua
-estrutura e design (\textit{Refactor}).
-Este ciclo deve ser repetido em pequenos incrementos, até que a funcionalidade esteja pronta.\\
-Assim em cada iteração, a complexidade vai aumentado aos poucos, porém com a certeza 
-que há corretude em cada implementação.\\
-Cada passo traz um benefício. Escrever o teste antes, prática conhecida como \textit{Test First}, 
-obrigatoriamente força com que o código produzido seja testável por construção, 
-e código testável implica código com baixo acoplamento, aspecto extremamente importante no design de software.\\ 
-Ao escrever testes previamente, faz com que o desenvolvedor pense antecipadamente no comportamento que a 
-aplicação deve ter, antes de mesmo de escrever algum código. 
-Desde a implementação, o projeto terá um nível de qualidade maior, 
-já que esta técnica força pensar em problemas e suas soluções antes de qualquer código existir.\\
-Além disso, traz feedback imediato a cada refatoração, e também suprime o \textit{over--engineering}, 
-ou seja, implementar mais do que o estritamente necessário.\\
-O feedback acontece a cada ciclo, dando uma margem de segurança ao desenvolvedor, 
-de o que está sendo implementado além de correto é necessário. 
-TDD pode ser aplicado tanto para pequenas partes que compõem um sistema (Teste Unitários)
-quanto para componentes (Testes de Integração), e traz benefícios tanto em design quanto em performance, 
-pois depende da Arquitetura de Teste aplicada para garantir uma boa cobertura de testes, 
-tem-se um tempo relativamente menor na resolução de falhas do sistema total.\\
-Além de diminuir o custo na fase de manutenção do sistema, 
-oferece também uma margem de segurança maior aos desenvolvedores.\\
-Os testes automatizados também podem funcionar como uma forma de documentação, 
-pois estão descrevendo em partes o comportamento do sistema, suas interfaces, métodos e arquitetura.\\
+também conhecido como \textit{red--green--refactor} que consiste em criar um 
+teste unitário que faça falhar o código desenvolvido (\textit{Red}), 
+alterar o código para que o teste passe da forma mais simples (\textit{Green}) 
+e refatorar o código com o objetivo de melhorar a sua estrutura e design 
+(\textit{Refactor}).
+Este ciclo deve ser repetido em pequenos incrementos, até que a funcionalidade 
+esteja pronta.\\Assim em cada iteração, a complexidade vai aumentado aos poucos, 
+porém com a certeza que há corretude em cada implementação.\\
+Cada passo traz um benefício. Escrever o teste antes, prática conhecida 
+como \textit{Test First}, obrigatoriamente força com que o código produzido 
+seja testável por construção, e código testável implica código com baixo 
+acoplamento, aspecto extremamente importante no design de software.\\ 
+Ao escrever testes previamente, faz com que o desenvolvedor pense 
+antecipadamente no comportamento que a aplicação deve ter, antes de mesmo de 
+escrever algum código. Desde a implementação, o projeto terá um nível de 
+qualidade maior, já que esta técnica força pensar em problemas e suas soluções 
+antes de qualquer código existir.\\
+Além disso, traz feedback imediato a cada refatoração, e também suprime 
+o \textit{over--engineering}, ou seja, implementar mais do que o estritamente 
+necessário.\\O feedback acontece a cada ciclo, dando uma margem de segurança 
+ao desenvolvedor, de o que está sendo implementado além de correto é necessário. 
+TDD pode ser aplicado tanto para pequenas partes que compõem um sistema 
+(Teste Unitários)quanto para componentes (Testes de Integração), e traz 
+benefícios tanto em design quanto em performance, pois depende da Arquitetura 
+de Teste aplicada para garantir uma boa cobertura de testes, tem-se um tempo 
+relativamente menor na resolução de falhas do sistema total.\\Além de diminuir 
+o custo na fase de manutenção do sistema, oferece também uma margem de 
+segurança maior aos desenvolvedores.\\Os testes automatizados também podem 
+funcionar como uma forma de documentação, pois estão descrevendo em partes o 
+comportamento do sistema, suas interfaces, métodos e arquitetura.\\
 TDD é entendido como um dos princípios da Extreme Programming (XP).\\
 Os principais benefícios do TDD são:
 \begin{itemize}
@@ -178,9 +183,57 @@ pois caso contrário, os testes serão executados poucas vezes
 e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
 
 \section{Revisão de código fonte}
+O melhor período para se encontrar falhas em código fontes é durante a codificação.\\
+Conforme relatado em \cite{jones:07}, Inspeções de código formais são cerca de duas 
+vezes tão eficiente quanto qualquer forma conhecida de testes para encontrar 
+profundamente falhas sutis de programação, e são o único método conhecido 
+que tem uma média acima de 80 por cento na eficiência de remoção de defeitos.\\
+Infelizmente, é díficil convencer desenvolvedores e gestores sobre estas vantagens.
+Gestores preocupam-se sobre a demanta de tempo utilizada para esta atividade, que
+conflita com o cronograma do projeto, por outro lado, desenvolvedores não sentem-se
+confortáveis com revisões de código, principalmente por atingir seus egos e demonstrar
+suas falhas. Por outro lado, projetos que utilizam a revisão de código, trazem 
+resultados extraordinários.\\
+Aliado a testes unitários consisos e a rigorosos revisões de código, é possível
+concluir uma tarefa livre de falhas antecipamente a inclusão dela no sistema de 
+controle de versão.\\
+Há alguns métodos utilizados para revisão de código.
+\begin{itemize}
+	\item
+		Revisão Tardia.
+		É realizado um evento em que será realizado a revisão de toda a equipe,
+		ou até equipes responsáveis por outras áreas, para aanálise e correção 
+		de todo o sistema.
+		Mas isso pode não ser a forma mais eficaz de realizar as revisões de código 
+		e não parece particularmente ágil. Grandes equipes de avaliação tendem a 
+		entrar em longas discussões e uma revisão muito ampla não só pode ser 
+		desnecessário, mas pode até ser prejudicial para o progresso do projeto.
+	\item
+		Jogo Pick-up.
+		Assim que algum código foi escrito, compilado, testado e está pronto 
+		para check-in, o código é capturado para análise de outro desenvolvedor. 
+		As revisão de commit são designados para ser rápidos e sem extensas discussões, 
+		para garantir que o código é aceitável antes de inserí-lo ao projeto. 
+		Para eliminar quaisquer rotinas comportamentais ou vícios é ideal que 
+		a revisão seja realizada por desenvolvedores distintos a cada semana.
+	\item
+		Programação em Par.
+		Utiliza a programação sempre em duplas, onde uma pessoa fica no teclado
+		(o condutor) e uma pessoa se senta para trás e atua como navegador. 
+		De vez em quando, alternam-se os papéis. 
+		Aumentando a atenção e crítica sobre o desenvolvimento de uma 
+		funcionalidade. O ideal é integração entre desenvolvedores mais experientes, 
+		com menos os experientes.
+\end{itemize}
 
-
-
+Outra técnica útil é criar um checklist para a revisão de código, por exemplo:
+\begin{itemize}
+	\item É possível ler e compreender o código? 
+	\item Há alguma possível falha ?
+	\item Será que o código tem qualquer efeito indesejável em outras partes da aplicação ? 
+	\item Existe alguma duplicação de código ?
+	\item É possível aplicar melhorias ou refatoração para melhorar o código ?
+\end{itemize}
 
 \subsection{Subsections}
 
@@ -234,7 +287,7 @@ black-and-white images, and 150-300 dpi for grayscale images.  Do not include
 images with excessive resolution, as they may take hours to print, without any
 visible difference in the result. 
 
-\section{Considera\c{c}\~oes e Trabalhos Futuros}
+\section{Considerações e Trabalhos Futuros}
 
 Bibliographic references must be unambiguous and uniform.  We recommend giving
 the author names references in brackets, e.g. \cite{knuth:84},

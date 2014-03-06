@@ -22,4 +22,9 @@ Erdogmus, H., Morisio, M., and Torchiano, M.(2005).
 \newblock On the effectiveness of test--first approach to programming.
 \newblock IEEE Transactions on Software Engineering, pages 226--237
 
+\bibitem[Jones, Capers 2007]{jones:07}
+Jones, Capers (2007).
+\newblock Estimating Software Costs.
+\newblock McGraw-Hill, New York, 2nd edition.
+
 \end{thebibliography}
