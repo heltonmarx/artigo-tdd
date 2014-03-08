@@ -46,6 +46,20 @@
 
 \section{Introdução}
 
+Com a popularização dos métodos ágeis. difundiu--se e muito o desenvolvimento
+orientado a testes (\textit{Test Driven Development}), onde há uma busca constante
+em eliminar falhas de programação durante a codificação, com foco principalmente em 
+design, pois produzir um código testável implica em baixo acoplamento, além da acréscimo
+de qualidade sobre produto de software.\\
+Além dos testes unitários, há também a revisão de código, que integrado a um sistema testes automatizados e um sistema de controle de versão obtem-se uma metodologia de trabalho eficaz e
+que traz velocidade e segurança no desenvolvimento de sistemas, principalmente em C/C++ em que
+há uma gama enorme de plataformas e arquiteturas para esta linguagem.\\
+Este artigo apresentará uma proposta de workflow para desenvolvimento em C/C++ baseado em TDD, 
+utilizando \textit{pre-tested commits}, sendo possível expandí-lo a outras linguagens de 
+programação.
+
+\section {Fundamentação Teórica}
+
 \textit{Test Driven Development} (TDD) é uma abordagem iterativa para 
 desenvolvimento de software baseada em testes automatizados. 
 A idéia é aplicar pequenos ciclos de \textbf{teste--codificação--refatoração}, 
@@ -118,7 +132,7 @@ Os principais benefícios do TDD são:
 		implementando está funcionando
 \end{itemize}
 
-\section{Test-First e Test-Last}
+\subsection{Test-First e Test-Last}
 
 Há duas abordagens em relação aos teste unitários, 
 que são o \textit{Test-First} que força que o código de teste seja produzido 
@@ -173,7 +187,7 @@ espera que seja usado, e também a ocorrência em demasia de
 \textit{over--engineering}, isto é, escrever código para coisas que talvez não 
 sejam necessárias naquele momento. 
 
-\section{Testes Automatizados}
+\subsection{Testes Automatizados}
 
 São uma ferramenta extremamente valiosa de feedback, 
 ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
@@ -198,7 +212,7 @@ servidor de integração contínua.\\
 serem executados, pois caso contrário, os testes serão executados poucas vezes 
 e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
 
-\section{Revisão de código fonte}
+\subsection{Revisão de código fonte}
 
 O melhor período para se encontrar falhas em código fontes é durante a 
 codificação.\\
@@ -268,70 +282,15 @@ controle de versão executam revisões em grupo do tipo
 análise de um grupo de desenvolvedores, que aprovam ou não o código, 
 indicando melhorias e alterações.
 
-\subsection{Subsections}
+\subsection{Pre-Tested Commits}
 
-The subsection titles must be in boldface, 12pt, flush left.
+\section{Workflow para C++ com TDD}
 
-\section{Figures and Captions}\label{sec:figs}
+\section{Avaliação}
 
-
-Figure and table captions should be centered if less than one line
-(Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
-both margins, as shown in Figure~\ref{fig:exampleFig2}. The caption font must
-be Helvetica, 10 point, boldface, with 6 points of space before and after each
-caption.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.5\textwidth]{fig1.jpg}
-\caption{A typical figure}
-\label{fig:exampleFig1}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.3\textwidth]{fig2.jpg}
-\caption{This figure is an example of a figure caption taking more than one
-  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-\label{fig:exampleFig2}
-\end{figure}
-
-In tables, try to avoid the use of colored or shaded backgrounds, and avoid
-thick, doubled, or unnecessary framing lines. When reporting empirical data,
-do not use more decimal digits than warranted by their precision and
-reproducibility. Table caption must be placed before the table (see Table 1)
-and the font used must also be Helvetica, 10 point, boldface, with 6 points of
-space before and after each caption.
-
-\begin{table}[ht]
-\centering
-\caption{Variables to be considered on the evaluation of interaction
-  techniques}
-\label{tab:exTable1}
-\includegraphics[width=.7\textwidth]{table.jpg}
-\end{table}
-
-\section{Images}
-
-All images and illustrations should be in black-and-white, or gray tones,
-excepting for the papers that will be electronically available (on CD-ROMs,
-internet, etc.). The image resolution on paper should be about 600 dpi for
-black-and-white images, and 150-300 dpi for grayscale images.  Do not include
-images with excessive resolution, as they may take hours to print, without any
-visible difference in the result. 
-
-\section{Considerações e Trabalhos Futuros}
-
-Bibliographic references must be unambiguous and uniform.  We recommend giving
-the author names references in brackets, e.g. \cite{knuth:84},
-\cite{boulic:91}, and \cite{smith:99}.
-
-The references must be listed using 12 point font size, with 6 points of space
-before each reference. The first line of each reference should not be
-indented, while the subsequent should be indented by 0.5 cm.
+\section{Conclusões}
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
 
 \end{document}
-
