@@ -6,6 +6,7 @@
 
 \usepackage[brazil]{babel}   
 \usepackage[latin1]{inputenc}
+\usepackage{hyperref}
      
 \sloppy
 
@@ -61,179 +62,211 @@ como \textit{Test First}, obrigatoriamente força com que o código produzido
 seja testável por construção, e código testável implica código com baixo 
 acoplamento, aspecto extremamente importante no design de software.\\ 
 Ao escrever testes previamente, faz com que o desenvolvedor pense 
-antecipadamente no comportamento que a aplicação deve ter, antes de mesmo de 
+antecipadamente no comportamento que a aplicação deve ter, antes mesmo de 
 escrever algum código. Desde a implementação, o projeto terá um nível de 
-qualidade maior, já que esta técnica força pensar em problemas e suas soluções 
-antes de qualquer código existir.\\
-Além disso, traz feedback imediato a cada refatoração, e também suprime 
-o \textit{over--engineering}, ou seja, implementar mais do que o estritamente 
-necessário.\\O feedback acontece a cada ciclo, dando uma margem de segurança 
-ao desenvolvedor, de o que está sendo implementado além de correto é necessário. 
-TDD pode ser aplicado tanto para pequenas partes que compõem um sistema 
-(Teste Unitários)quanto para componentes (Testes de Integração), e traz 
-benefícios tanto em design quanto em performance, pois depende da Arquitetura 
-de Teste aplicada para garantir uma boa cobertura de testes, tem-se um tempo 
-relativamente menor na resolução de falhas do sistema total.\\Além de diminuir 
-o custo na fase de manutenção do sistema, oferece também uma margem de 
-segurança maior aos desenvolvedores.\\Os testes automatizados também podem 
-funcionar como uma forma de documentação, pois estão descrevendo em partes o 
-comportamento do sistema, suas interfaces, métodos e arquitetura.\\
+qualidade mais apurado, já que esta técnica força pensar em problemas e 
+suas soluções antes de qualquer código existir.\\
+Além disso, obtem--se o \textit{feedback} imediato a cada refatoração, 
+e também suprime o \textit{over--engineering}, ou seja, implementar mais do que
+o estritamente necessário.\\O feedback acontece a cada ciclo, dando uma margem 
+de segurança ao desenvolvedor, de o que está sendo implementado além de correto 
+é necessário.\\TDD pode ser aplicado tanto para pequenas partes que compõem um 
+sistema (Teste Unitários) quanto para componentes (Testes de Integração), e 
+traz benefícios tanto em design quanto em performance, pois depende da 
+Arquitetura de Teste aplicada para garantir uma boa cobertura de testes, tem-se 
+um tempo relativamente menor na resolução de falhas do sistema total.\\
+Além de diminuir o custo na fase de manutenção do sistema, oferece também uma 
+margem de segurança maior aos desenvolvedores.\\Os testes automatizados também 
+podem funcionar como uma forma de documentação, pois estão descrevendo em 
+partes o comportamento do sistema, suas interfaces, métodos e arquitetura.\\
 TDD é entendido como um dos princípios da Extreme Programming (XP).\\
 Os principais benefícios do TDD são:
 \begin{itemize}
 	\item
-		Diminuição de falhas: Erros de lógica, e também falhas de design podem ser 
-		encontrados rapidamente durante o TDD, ocorrendo a prevenção de defeitos.
+		\textbf{Diminuição de falhas:} 
+		Erros de lógica e também falhas de design podem 
+		ser encontrados rapidamente durante o TDD, ocorrendo previamente a 
+		prevenção de defeitos.
 	\item
-		Menor tempo de debug: Com um menor número de falhas, 
-		obtêm-se um menor tempo de debug.
+		\textbf{Menor tempo de debug:} 
+		Com um menor número de falhas, obtêm-se um menor tempo de debug.
 	\item
-		A Documentação não mente: Com testes bem estruturados, 
-		é possível analisar a qualidade da documentação 
-		Testes bem estruturados trazem uma forma mais vísivel documentação, 
-		onde um exemplo funcional supri uma documentação excassa.
+		\textbf{Documentação não mente:} 
+		Com testes bem estruturados, é possível analisar a qualidade da 
+		documentação. Testes bem estruturados trazem uma forma mais vísivel
+		através de um exemplo funcional, suprindo uma documentação excassa.
 	\item
-		Paz de espírito: Um código exaustivamente testado com um conjunto abrangente 
-		de testes de regressão traz estabilidade e confiança aos desenvolvedores, 
-		trazendo conforto e melhores fins de semana.
+		\textbf{Paz de espírito:} 
+		Um código exaustivamente testado com um conjunto abrangente 
+		de testes de unitários traz estabilidade e confiança aos desenvolvedores, 
+		trazendo conforto e fins de semana despreocupados.
 	\item
-		Aperfeiçoamento do design: Um bom design é um design testável. 
-		Funções muito grandes, forte acoplamento e condicionais complexas, 
-		levam a um código mais complexo e menos testável. 
-		Os desenvolvedores percebem previamente uma falha de design caso os 
-		testes não possam ser implementados.
+		\textbf{Aperfeiçoamento do design:} 
+		Um bom design é um design testável. 
+		Funções muito grandes, forte acoplamento e condicionais complexas 
+		tornam o código mais complexo e menos testável. Os desenvolvedores 
+		percebem previamente uma falha de design caso os testes não possam ser 
+		implementados.
 	\item
-		Monitorar o progresso: Os testes trazem exatamente um retrato 
-		do que está funcionando e uma porcentagem real do trabalho realizado.
+		\textbf{Monitorar o progresso:}
+		Os testes trazem exatamente um retrato do que está funcionando e uma 
+		porcentagem real do trabalho realizado.
 	\item
-		Feedback imediato: TDD traz imediatamente uma gratificação aos desenvolvedores. 
-		A cada codificação testada, traz a garantia de que o software está funcionando.
+		\textbf{Feedback imediato:} 
+		O TDD traz imediatamente uma gratificação aos desenvolvedores. 
+		A cada codificação testada, há uma garantia de que o software 
+		implementando está funcionando
 \end{itemize}
 
 \section{Test-First e Test-Last}
 
 Há duas abordagens em relação aos teste unitários, 
-que são o \textit{Test-First} que força que o código de teste seja produzido antes 
-da implementação do algoritmo, e o \textit{Test-Last} que ao inverso, 
+que são o \textit{Test-First} que força que o código de teste seja produzido 
+antes da implementação do algoritmo, e o \textit{Test-Last} que ao inverso, 
 é a elaboração do teste unitário após a conclusão do algoritmo a ser testado.\\
 \cite{erdogmus:05}, resolveram investigar, por meio de um experimento 
 as diferenças entre as abordagens \textit{Test-First} e \textit{Test-Last}. 
-O experimento consiste em dois grupos em meio acadêmico, 
-cada qual usando umas das abordagens. 
-As conclusões foram as seguintes: 
-o grupo \textit{Test-First} acabou escrevendo 52\% mais testes do que o grupo \textit{Test-Last}, 
-algo bastante significativo. 
-Em termos de qualidade externa, pelo estudo, não pareceu haver diferença entre os dois métodos. 
-Houveram evidências de que a qualidade externa estaria mais relacionada 
-ao números de testes escritos do que quando estes são escritos.\\ 
-Segundo os autores, apesar do método Test-First por si só não aumenta a qualidade, 
-este pareceu ter um efeito positivo sobre a produtividade dos desenvolvedores, 
-possívelmente por causa dos seguintes fatores:
+O experimento consiste em dois grupos em meio acadêmico, cada qual usando umas 
+das abordagens. As conclusões foram as seguintes: 
+o grupo \textit{Test-First} acabou escrevendo 52\% mais testes do que o grupo 
+\textit{Test-Last}, algo bastante significativo. 
+Em termos de qualidade externa, pelo estudo, não houve diferença entre os dois 
+métodos. Houveram sim, evidências de que a qualidade externa estaria mais 
+relacionada ao números de testes escritos do que quando estes 
+são escritos previamente.\\ 
+Segundo os autores, apesar do método Test-First por si só não aumentar a 
+qualidade, este pareceu ter um efeito positivo sobre a produtividade dos 
+desenvolvedores, possívelmente por causa dos seguintes fatores:
 
 \begin{itemize}
 	\item
-		Melhor compreensão do problema. 
-		Especificar o teste antes força o desenvolvedor a refletir de maneira mais 
-		profunda e completa sobre o problema a ser resolvido. 
-		Criar cenários de testes antes ajuda a provar a robustez da solução proposta.
+		\textbf{Melhor compreensão do problema:}
+		Especificar o teste antes força o desenvolvedor a refletir de maneira 
+		mais profunda e completa sobre o problema a ser resolvido. 
+		Criar cenários de testes antes ajuda a provar a robustez da solução 
+		proposta.
 	\item
-		Melhor foco na tarefa a ser feita. 
+		\textbf{Melhor foco na tarefa a ser feita:}
 		Existe uma menor carga cognitiva sobre o desenvolvedor, 
-		pois ele estará concentrado em resolver apenas uma pequena porção do problema, 
-		somente o suficiente para atender o teste existente falhando.
+		pois ele estará concentrado em resolver apenas uma pequena porção do 
+		problema, somente o suficiente para atender o teste existente falhando.
 	\item
-		Aprendizado mais rápido. 
-		O desenvolvedor saberá mais rapidamente se a funcionalidade implementada está de acordo com o esperado. 
-		Além disso, existe um critério inequívoco para saber quando o trecho de funcionalidade está realmente pronto.
+		\textbf{Aprendizado mais rápido:}
+		O desenvolvedor saberá mais rapidamente se a funcionalidade implementada
+		está de acordo com o esperado. Além disso, existe um critério inequívoco 
+		para saber quando o trecho de funcionalidade está realmente pronto.
 	\item
-		Menos esforço de retrabalho. 
-		Em uma abordagem Test-Last, corre-se o risco de pouca refatoração, 
-		desenvolvendo a funcionalidade por inteiro, incorrendo em retrabalho 
-		à medida que os testes forem criados posteriormente e apontarem outros problemas.
+		\textbf{Menos esforço de retrabalho:}
+		Em uma abordagem \textit{Test-Last}, corre-se o risco de pouca 
+		refatoração, desenvolvendo a funcionalidade por inteiro, incorrendo em 
+		retrabalho à medida que os testes forem criados posteriormente e 
+		apontarem outros problemas.
 \end{itemize}
 
-O estudo demonstra claramente uma qualidade maior ao utilizarmos Test-First, 
-porém deve-se levar em consideração diversos fatores ao selecionar um método, 
-principalmente quando há uma equipe mais experiente que saiba gerar produtividade 
-unindo os dois métodos (Test-First e Test-Last).
-Além disso, o risco da abordagem Test-Last está na perda do benefício da programação por interação, 
-ou seja, evoluir o software a partir do ponto de vista de como se espera que seja usado, 
-e também a ocorrência em demasia de over-engineering, 
-isto é, escrever código para coisas que talvez não sejam necessárias naquele momento. 
+O estudo demonstra claramente uma qualidade maior ao utilizarmos 
+\textit{Test-First}, porém deve-se levar em consideração diversos fatores ao 
+selecionar um método, principalmente quando há uma equipe mais experiente que 
+saiba gerar produtividade unindo os dois métodos. Além disso, o risco da 
+abordagem \textit{Test-Last} está na perda do benefício da programação por 
+interação, ou seja, evoluir o software a partir do ponto de vista de como se 
+espera que seja usado, e também a ocorrência em demasia de 
+\textit{over--engineering}, isto é, escrever código para coisas que talvez não 
+sejam necessárias naquele momento. 
 
 \section{Testes Automatizados}
 
 São uma ferramenta extremamente valiosa de feedback, 
 ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
 quanto à qualidade interna (aquela perceptível pelo desenvolvedor).\\
-A facilidade de poder executar continuamente os testes permite a identificação imediata 
-de alterações indesejáveis no sistema. Por essa razão, 
-os testes existentes para um sistema também são conhecidos como Testes de Regressão, 
-pois asseguram que um sistema não irá regredir do ponto atual em que se encontra. 
-O acréscimo contínuo de funcionalidades pode ser realizado sem medo de quebrar algo já estabilizado.\\
-Os testes também favorecem a prática saudável de refatoração, que consiste em aplicar pequenas 
-transformações na estrutura interna do software, preservando o comportamento externo, 
-com o objetivo de melhorar o código, tornando-o mais legível e mais aderente às manutenções pelas quais deverá passar. 
-Entretanto é necessário a busca pelo equilíbrio da refatoração, que deve ser disciplinada para manter a qualidade do código escrito.\\
-Deve-se observar que o Teste Unitário é a base para os Testes de Integração, pois trazem um feedback imediato, 
-encorajando o desenvolvedor a executá-los mais frequentemente, 
-até a execução de todos os testes do sistema em um servidor de integração contínua.\\      
-É vital que existam testes automatizados que sejam fáceis e rápidos de serem executados, 
-pois caso contrário, os testes serão executados poucas vezes 
+A facilidade de poder executar continuamente os testes permite a identificação 
+imediata de alterações indesejáveis no sistema. Por essa razão, 
+os testes existentes para um sistema também são conhecidos como 
+Testes de Regressão, pois asseguram que um sistema não irá regredir do ponto 
+atual em que se encontra. O acréscimo contínuo de funcionalidades pode ser 
+realizado sem medo de quebrar algo já estabilizado.\\
+Os testes também favorecem a prática saudável de refatoração, que consiste em 
+aplicar pequenas transformações na estrutura interna do software, preservando 
+o comportamento externo, com o objetivo de melhorar o código, tornando-o mais 
+legível e mais aderente às manutenções pelas quais deverá passar. 
+Entretanto é necessário a busca pelo equilíbrio da refatoração, que deve ser 
+disciplinada para manter a qualidade do código escrito.\\
+Deve-se observar que o Teste Unitário é a base para os Testes de Integração, 
+pois trazem um feedback imediato, encorajando o desenvolvedor a executá-los 
+mais frequentemente, até a execução de todos os testes do sistema em um 
+servidor de integração contínua.\\      
+É vital que existam testes automatizados que sejam fáceis e rápidos de 
+serem executados, pois caso contrário, os testes serão executados poucas vezes 
 e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
 
 \section{Revisão de código fonte}
-O melhor período para se encontrar falhas em código fontes é durante a codificação.\\
-Conforme relatado em \cite{jones:07}, Inspeções de código formais são cerca de duas 
-vezes tão eficiente quanto qualquer forma conhecida de testes para encontrar 
-profundamente falhas sutis de programação, e são o único método conhecido 
-que tem uma média acima de 80 por cento na eficiência de remoção de defeitos.\\
-Infelizmente, é díficil convencer desenvolvedores e gestores sobre estas vantagens.
-Gestores preocupam-se sobre a demanta de tempo utilizada para esta atividade, que
-conflita com o cronograma do projeto, por outro lado, desenvolvedores não sentem-se
-confortáveis com revisões de código, principalmente por atingir seus egos e demonstrar
-suas falhas. Por outro lado, projetos que utilizam a revisão de código, trazem 
-resultados extraordinários.\\
-Aliado a testes unitários consisos e a rigorosos revisões de código, é possível
-concluir uma tarefa livre de falhas antecipamente a inclusão dela no sistema de 
-controle de versão.\\
+
+O melhor período para se encontrar falhas em código fontes é durante a 
+codificação.\\
+Conforme relatado em \cite{jones:07}, inspeções de código formais são cerca de 
+duas vezes tão eficiente quanto qualquer forma conhecida de testes para 
+encontrar profundamente falhas sutis de programação, e são o único método 
+conhecido que tem uma média acima de 80 por cento na eficiência de remoção de 
+defeitos.\\
+Infelizmente, há dificuldades em convencer desenvolvedores e gestores sobre 
+tais vantagens.Gestores preocupam-se sobre a demanta de tempo utilizada para 
+esta atividade, que conflita com o cronograma do projeto, sem claro considerar
+o ganho obtido pela busca não tardia de falhas de programação, por outro lado, 
+desenvolvedores sentem-se desconfortáveis com revisões de código, 
+principalmente por atingir seus egos e demonstrar suas falhas. 
+Aliado a testes unitários consisos e a rigorosas sessões de revisão de código, 
+é possível concluir uma tarefa livre de falhas antecipamente a inclusão dela no 
+sistema através do controle de versão.\\
 Há alguns métodos utilizados para revisão de código.
 \begin{itemize}
 	\item
-		Revisão Tardia.
-		É realizado um evento em que será realizado a revisão de toda a equipe,
-		ou até equipes responsáveis por outras áreas, para aanálise e correção 
-		de todo o sistema.
-		Mas isso pode não ser a forma mais eficaz de realizar as revisões de código 
-		e não parece particularmente ágil. Grandes equipes de avaliação tendem a 
-		entrar em longas discussões e uma revisão muito ampla não só pode ser 
-		desnecessário, mas pode até ser prejudicial para o progresso do projeto.
+		\textbf{Revisão Tardia:}
+		É realizado um evento em que será realizado uma sessão de revisão de 
+		código por todas as equipes da empresa, o que demonstra não ser a forma 
+		mais eficaz de realizar as revisões de código, porque  
+		grandes equipes de avaliação tendem a entrar em longas discussões e 
+		uma revisão muito ampla não só pode ser desnecessário, 
+		mas pode até ser prejudicial para o progresso do projeto.
 	\item
-		Jogo Pick-up.
-		Assim que algum código foi escrito, compilado, testado e está pronto 
-		para check-in, o código é capturado para análise de outro desenvolvedor. 
-		As revisão de commit são designados para ser rápidos e sem extensas discussões, 
-		para garantir que o código é aceitável antes de inserí-lo ao projeto. 
-		Para eliminar quaisquer rotinas comportamentais ou vícios é ideal que 
-		a revisão seja realizada por desenvolvedores distintos a cada semana.
+		\textbf{Jogo Pick-up:}
+		Assim que algum código é escrito, compilado, testado e pronto 
+		para o \textit{commit}, o código é capturado para análise por outro 
+		desenvolvedor. As revisão de \textit{pré--commit} são designados para 
+		serem rápidos e sem extensas discussões, o que garante um código é 
+		aceitável.Para eliminar quaisquer rotinas comportamentais ou vícios, o 
+		ideal é que a revisão seja realizada por desenvolvedores distintos a 
+		cada semana.
 	\item
-		Programação em Par.
-		Utiliza a programação sempre em duplas, onde uma pessoa fica no teclado
-		(o condutor) e uma pessoa se senta para trás e atua como navegador. 
-		De vez em quando, alternam-se os papéis. 
-		Aumentando a atenção e crítica sobre o desenvolvimento de uma 
-		funcionalidade. O ideal é integração entre desenvolvedores mais experientes, 
-		com menos os experientes.
+		\textbf{Programação em Par:}
+		Utilizar a programação sempre em duplas, onde um desenvolvedor fica no 
+		conduz a programação, utlizando o teclado e um outro desenvolvedor 
+		senta-se ao lado e atua como navegador, indicando melhorias e falhas.
+		De vez em quando, alternam-se os papéis.
+		Com isso, há um aumento de atenção e crítica sobre o desenvolvimento 
+		de uma funcionalidade.
+		O ideal é integração entre desenvolvedores mais experientes, 
+		com menos os experientes, para um aprendizado mútuo.
 \end{itemize}
 
-Outra técnica útil é criar um checklist para a revisão de código, por exemplo:
+Outra técnica útil é utilizar um checklist para a revisão de código, por exemplo:
 \begin{itemize}
-	\item É possível ler e compreender o código? 
-	\item Há alguma possível falha ?
-	\item Será que o código tem qualquer efeito indesejável em outras partes da aplicação ? 
-	\item Existe alguma duplicação de código ?
-	\item É possível aplicar melhorias ou refatoração para melhorar o código ?
+	\item 
+		É possível ler e compreender o código ? 
+	\item 
+		Há alguma possível falha ?
+	\item 
+		Será que o código tem qualquer efeito indesejável em outras partes 
+		da aplicação ? 
+	\item 
+		Existe alguma duplicação de código ?
+	\item 
+		É possível aplicar melhorias ou refatoração para melhorar o código ?
 \end{itemize}
+Além disso, é possível utilizar ferramentas de análise de código, como por exemplo, 
+o Gerrit \url{https://code.google.com/p/gerrit/}, que integradas ao sistema de 
+controle de versão executam revisões em grupo do tipo
+\textit{post--commit}, isto é, o código recém enviado ao repositório sofre uma 
+análise de um grupo de desenvolvedores, que aprovam ou não o código, 
+indicando melhorias e alterações.
 
 \subsection{Subsections}
 
