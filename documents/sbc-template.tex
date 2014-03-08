@@ -126,7 +126,7 @@ Os principais benefícios do TDD são:
 		Os testes trazem exatamente um retrato do que está funcionando e uma 
 		porcentagem real do trabalho realizado.
 	\item
-		\textbf{Feedback imediato:} 
+		\textbf{Feedback imediato:}
 		O TDD traz imediatamente uma gratificação aos desenvolvedores. 
 		A cada codificação testada, há uma garantia de que o software 
 		implementando está funcionando
@@ -283,6 +283,16 @@ análise de um grupo de desenvolvedores, que aprovam ou não o código,
 indicando melhorias e alterações.
 
 \subsection{Pre-Tested Commits}
+
+A proposta do \textit{pre-tested commit}, é dedicar um \textit{repositório primário} ligado ao 
+servidor de Integração Contínua para que execute os testes unitários e de integração, antes de ir para o repositório principal. \\
+Isto é necessário porque normalmente desenvolvedores não executam testes após a conclusão de uma tarefa, enviando para o repositório uma possível falha.
+Este tipo de ação é justificada para um sistema muito complexo, com \textit{n} testes de integração, e que demandam muito tempo, até horas para completar todo o processo de testes.\\
+Obviamente. é mandatório que o desenvolvedor execute seus testes unitários, mas há também, uma 
+possibilidade que seus testes não cubram uma falha gerada acidentalmente em outra parte do sistema. Portanto, para que não ocorra quebra do repositório principal o \textit{pre-tested commit} é utilizado.\\
+A utilização dele está fortemente ligado ao sistema 
+de controle de versão, como o TeamCity \url{http://www.jetbrains.com/teamcity/} ou a um conjunto de ferramentas configuradas para tal função, como por exemplo a utilização do Git (SCV), 
+Jenkins (Integração Contínua), Google Test (Testes unitários) e o Gerrit (Revisão de Código).\\
 
 \section{Workflow para C++ com TDD}
 
