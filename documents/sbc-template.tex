@@ -51,7 +51,8 @@ orientado a testes (\textit{Test Driven Development}), onde há uma busca constan
 em eliminar falhas de programação durante a codificação, com foco principalmente em 
 design, pois produzir um código testável implica em baixo acoplamento, além da acréscimo
 de qualidade sobre produto de software.\\
-Além dos testes unitários, há também a revisão de código, que integrado a um sistema testes automatizados e um sistema de controle de versão obtem-se uma metodologia de trabalho eficaz e
+Além dos testes unitários, há também a revisão de código, que integrado a um sistema testes 
+automatizados e um sistema de controle de versão obtem-se uma metodologia de trabalho eficaz e
 que traz velocidade e segurança no desenvolvimento de sistemas, principalmente em C/C++ em que
 há uma gama enorme de plataformas e arquiteturas para esta linguagem.\\
 Este artigo apresentará uma proposta de workflow para desenvolvimento em C/C++ baseado em TDD, 
@@ -276,7 +277,7 @@ Outra técnica útil é utilizar um checklist para a revisão de código, por exemplo
 		É possível aplicar melhorias ou refatoração para melhorar o código ?
 \end{itemize}
 Além disso, é possível utilizar ferramentas de análise de código, como por exemplo, 
-o Gerrit \url{https://code.google.com/p/gerrit/}, que integradas ao sistema de 
+o \cite{webpage:gerrit}, que integradas ao sistema de 
 controle de versão executam revisões em grupo do tipo
 \textit{post--commit}, isto é, o código recém enviado ao repositório sofre uma 
 análise de um grupo de desenvolvedores, que aprovam ou não o código, 
@@ -284,17 +285,27 @@ indicando melhorias e alterações.
 
 \subsection{Pre-Tested Commits}
 
-A proposta do \textit{pre-tested commit}, é dedicar um \textit{repositório primário} ligado ao 
-servidor de Integração Contínua para que execute os testes unitários e de integração, antes de ir para o repositório principal. \\
-Isto é necessário porque normalmente desenvolvedores não executam testes após a conclusão de uma tarefa, enviando para o repositório uma possível falha.
-Este tipo de ação é justificada para um sistema muito complexo, com \textit{n} testes de integração, e que demandam muito tempo, até horas para completar todo o processo de testes.\\
-Obviamente. é mandatório que o desenvolvedor execute seus testes unitários, mas há também, uma 
-possibilidade que seus testes não cubram uma falha gerada acidentalmente em outra parte do sistema. Portanto, para que não ocorra quebra do repositório principal o \textit{pre-tested commit} é utilizado.\\
-A utilização dele está fortemente ligado ao sistema 
-de controle de versão, como o TeamCity \url{http://www.jetbrains.com/teamcity/} ou a um conjunto de ferramentas configuradas para tal função, como por exemplo a utilização do Git (SCV), 
-Jenkins (Integração Contínua), Google Test (Testes unitários) e o Gerrit (Revisão de Código).\\
+A proposta do \textit{pre-tested commit}, é dedicar um \textit{repositório primário} 
+ligado ao servidor de Integração Contínua para que execute os testes unitários e de 
+integração, antes de ir para o repositório principal. \\
+Isto é necessário porque normalmente desenvolvedores não executam testes após a conclusão 
+de uma tarefa, enviando para o repositório uma possível falha.
+Este tipo de ação é justificada para um sistema muito complexo, com \textit{n} testes de 
+integração, e que demandam muito tempo, até horas para completar todo o processo de testes.\\
+Obviamente. é mandatório que o desenvolvedor execute seus testes unitários, mas há também, 
+uma possibilidade que seus testes não cubram uma falha gerada acidentalmente em outra parte 
+do sistema. 
+Portanto, para que não ocorra quebra do repositório principal o \textit{pre-tested commit} é utilizado.\\
+A utilização dele está fortemente ligado ao sistema de controle de versão, 
+como o \cite{website:teamcity} ou a um conjunto 
+de ferramentas configuradas para tal função, como por exemplo a utilização do 
+\cite{website:git}(SCV), 
+\cite{website:jenkins}(Integração Contínua), 
+\cite{website:gtest}(Testes unitários) e o 
+\cite{website:gerrit}(Revisão de Código).\\
 
-\section{Workflow para C++ com TDD}
+\section{Workflow para C/C++ com TDD}
+
 
 \section{Avaliação}
 

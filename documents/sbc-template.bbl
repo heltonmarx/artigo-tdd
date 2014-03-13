@@ -1,22 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Boulic and Renault 1991]{boulic:91}
-Boulic, R. and Renault, O. (1991).
-\newblock 3d hierarchies for animation.
-\newblock In Magnenat-Thalmann, N. and Thalmann, D., editors, {\em New Trends
-  in Animation and Visualization}. John Wiley {\&} Sons ltd.
-
-\bibitem[Knuth 1984]{knuth:84}
-Knuth, D.~E. (1984).
-\newblock {\em The {\TeX} Book}.
-\newblock Addison-Wesley, 15th edition.
-
-\bibitem[Smith and Jones 1999]{smith:99}
-Smith, A. and Jones, B. (1999).
-\newblock On the complexity of computing.
-\newblock In Smith-Jones, A.~B., editor, {\em Advances in Computer Science},
-  pages 555--566. Publishing Press.
-
 \bibitem[Erdogmus, H., Morisio, M., and Torchiano, M. 2005]{erdogmus:05}
 Erdogmus, H., Morisio, M., and Torchiano, M.(2005).
 \newblock On the effectiveness of test--first approach to programming.
@@ -26,5 +9,25 @@ Erdogmus, H., Morisio, M., and Torchiano, M.(2005).
 Jones, Capers (2007).
 \newblock Estimating Software Costs.
 \newblock McGraw-Hill, New York, 2nd edition.
+
+\bibitem[TeamCity]{website:teamcity}
+\newblock Continous Integration for Everybody
+\newblock http://www.jetbrains.com/teamcity/
+
+\bibitem[Git]{website:git}
+\newblock Free and open source distributed version control system
+\newblock http://git-scm.com/
+
+\bibitem[Jenkins]{website:jenkins}
+\newblock An extendable open source continuous integration server
+\newblock http://jenkins-ci.org/
+
+\bibitem[Google Test]{website:gtest}
+\newblock Google C++ Testing Framework
+\newblock https://code.google.com/p/googletest/
+
+\bibitem[Gerrit]{website:gerrit}
+\newblock Gerrit Code Review
+\newblock https://code.google.com/p/gerrit/
 
 \end{thebibliography}
