@@ -46,11 +46,11 @@
 
 \section{Introdução}
 
-Com a popularização dos métodos ágeis. difundiu--se e muito o desenvolvimento
+Com a popularização dos métodos ágeis difundiu--se e muito o desenvolvimento
 orientado a testes (\textit{Test Driven Development}), onde há uma busca 
 constante em eliminar falhas de programação durante a codificação, com foco 
 principalmente em design, pois produzir um código testável implica em baixo 
-acoplamento, além da acréscimo de qualidade sobre produto de software.\\
+acoplamento, além do acréscimo de qualidade sobre produto de software.\\
 Além dos testes unitários, há também a revisão de código, que integrado a um 
 sistema testes automatizados e um sistema de controle de versão obtem-se uma 
 metodologia de trabalho eficaz e que traz velocidade e segurança no 
@@ -60,12 +60,14 @@ Este artigo apresentará uma proposta de workflow para desenvolvimento em C/C++
 baseado em TDD, utilizando \textit{pre-tested commits}, sendo possível 
 expandí-lo a outras linguagens de programação.
 
-\section {Fundamentação Teórica}
+\newpage
+
+\section {Fundamentação Teórica} \label{sec:theoreticalFoundation}
 
 \textit{Test Driven Development} (TDD) é uma abordagem iterativa para 
 desenvolvimento de software baseada em testes automatizados. 
-A idéia é aplicar pequenos ciclos de \textbf{teste--codificação--refatoração}, 
-também conhecido como \textit{red--green--refactor} que consiste em criar um 
+A idéia é aplicar pequenos ciclos de teste-codificação-refatoração, 
+também conhecido como \textit{red-green-refactor} que consiste em criar um 
 teste unitário que faça falhar o código desenvolvido (\textit{Red}), 
 alterar o código para que o teste passe da forma mais simples (\textit{Green}) 
 e refatorar o código com o objetivo de melhorar a sua estrutura e design 
@@ -134,7 +136,7 @@ Os principais benefícios do TDD são:
 		implementando está funcionando
 \end{itemize}
 
-\subsection{Test-First e Test-Last}
+\subsection{Test-First e Test-Last}	\label{sec:testFirstLast}
 
 Há duas abordagens em relação aos teste unitários, 
 que são o \textit{Test-First} que força que o código de teste seja produzido 
@@ -189,7 +191,7 @@ espera que seja usado, e também a ocorrência em demasia de
 \textit{over--engineering}, isto é, escrever código para coisas que talvez não 
 sejam necessárias naquele momento. 
 
-\subsection{Testes Automatizados}
+\subsection{Testes Automatizados}	\label{sec:automatedTests}
 
 São uma ferramenta extremamente valiosa de feedback, 
 ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
@@ -214,7 +216,7 @@ servidor de integração contínua.\\
 serem executados, pois caso contrário, os testes serão executados poucas vezes 
 e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
 
-\subsection{Revisão de código fonte}
+\subsection{Revisão de código fonte}	\label{sec:codeRevision}
 
 O melhor período para se encontrar falhas em código fontes é durante a 
 codificação.\\
@@ -266,25 +268,25 @@ Há alguns métodos utilizados para revisão de código.
 Outra técnica útil é utilizar um checklist para a revisão de código, por exemplo:
 \begin{itemize}
 	\item 
-		É possível ler e compreender o código ? 
+		É possível ler e compreender o código? 
 	\item 
-		Há alguma possível falha ?
+		Há alguma possível falha?
 	\item 
 		Será que o código tem qualquer efeito indesejável em outras partes 
-		da aplicação ? 
+		da aplicação? 
 	\item 
-		Existe alguma duplicação de código ?
+		Existe alguma duplicação de código?
 	\item 
-		É possível aplicar melhorias ou refatoração para melhorar o código ?
+		É possível aplicar melhorias ou refatoração para melhorar o código?
 \end{itemize}
 Além disso, é possível utilizar ferramentas de análise de código, como por 
-exemplo, o \cite{webpage:gerrit}, que integradas ao sistema de 
+exemplo, o \cite{website:gerrit}, que integradas ao sistema de 
 controle de versão executam revisões em grupo do tipo
 \textit{post--commit}, isto é, o código recém enviado ao repositório sofre uma 
 análise de um grupo de desenvolvedores, que aprovam ou não o código, 
 indicando melhorias e alterações.
 
-\subsection{Pre-Tested Commits}
+\subsection{Pre-Tested Commits}	\label{sec:preTestedCommits}
 
 A proposta do \textit{pre-tested commit}, é dedicar um 
 \textit{repositório primário} ligado ao servidor de Integração Contínua para 
@@ -308,12 +310,81 @@ de ferramentas configuradas para tal função, como por exemplo a utilização do
 \cite{website:gtest}(Testes unitários) e o 
 \cite{website:gerrit}(Revisão de Código).\\
 
-\section{Workflow para C/C++ com TDD}
+\newpage
 
+\section{Workflow}	\label{sec:workflow}
 
-\section{Avaliação}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\textwidth]{../processos/workflow.png}
+	\caption{Workflow}
+	\label{fig:workflow}
+\end{figure}
 
-\section{Conclusões}
+You think water moves fast? You should see ice. 
+It moves like it has a mind. 
+Like it knows it killed the world once and got a taste for murder. 
+After the avalanche, it took us a week to climb out. 
+Now, I don't know exactly when we turned on each other, 
+but I know that seven of us survived the slide... and only five made it out. 
+Now we took an oath, that I'm breaking now. 
+We said we'd say it was the snow that killed the other two, 
+but it wasn't. 
+Nature is lethal but it doesn't hold a candle to man.
+(Figure~\ref{fig:workflow}).
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\textwidth]{../processos/TDD.png}
+	\caption{Workflow TDD}
+	\label{fig:TDD}
+\end{figure}
+
+The path of the righteous man is beset on all sides by the 
+iniquities of the selfish and the tyranny of evil men. 
+Blessed is he who, in the name of charity and good will, 
+shepherds the weak through the valley of darkness, 
+for he is truly his brother's keeper and the finder of lost children. 
+And I will strike down upon thee with great vengeance and furious 
+anger those who would attempt to poison and destroy My brothers. 
+And you will know My name is the Lord when I lay My vengeance upon thee.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\textwidth]{../processos/codeRevision.png}
+	\caption{Workflow Revis\~ao de Codigo}
+	\label{fig:codeRevision}
+\end{figure}
+
+My money's in that office, right? 
+If she start giving me some bullshit about it ain't there, 
+and we got to go someplace else and get it, 
+I'm gonna shoot you in the head then and there. 
+Then I'm gonna shoot that bitch in the kneecaps, 
+find out where my goddamn money is. She gonna tell me too. 
+Hey, look at me when I'm talking to you, motherfucker. 
+You listen: we go in there, and that nigga Winston or 
+anybody else is in there, you the first motherfucker to get shot. You understand?
+	
+\section{Avaliação}		\label{sec:evaluation}
+
+Now that we know who you are, I know who I am. I'm not a mistake!
+It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? 
+He's the exact opposite of the hero.
+And most times they're friends, like you and me! I should've known way back when... 
+You know why, David? Because of the kids. 
+They called me Mr Glass.
+
+\section{Conclus\~ao}	\label{sec:conclusion}
+
+Well, the way they make shows is, they make one show. 
+That show's called a pilot. Then they show that show to the people who make shows, 
+and on the strength of that one show they decide if they're going to make more shows. 
+Some pilots get picked and become television programs. 
+Some don't, become nothing. 
+She starred in one of the ones that became nothing.
+
+\newpage
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
