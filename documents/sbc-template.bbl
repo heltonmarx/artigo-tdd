@@ -10,6 +10,11 @@ Jones, Capers (2007).
 \newblock Estimating Software Costs.
 \newblock McGraw-Hill, New York, 2nd edition.
 
+\bibitem[Subramaniam, Hunt 2006]{subramaniam:06}
+Subramaniam, Hunt (2006).
+\newblock Practices of an Agile Developer.
+\newblock The Pragmatic Bookshelf, Texas.
+
 \bibitem[TeamCity]{website:teamcity}
 \newblock Continous Integration for Everybody
 \newblock http://www.jetbrains.com/teamcity/

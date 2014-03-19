@@ -38,7 +38,7 @@
 	também apresentar a revisão de código para análise e busca de falhas no 
 	código fonte, alterações na arquitetura do sistema, reimplementação de 
 	funcionalidades já existentes, duplicidade de códigos e melhorias de 
-	estética e padronização
+	estética e padronização.
 	São apresentados os benefícios da utilização dessas metodologias e 
 	por fim um workflow de desenvolvimento em C/C++ baseado em TDD.
 \end{resumo}
@@ -46,15 +46,15 @@
 
 \section{Introdução}
 
-Com a popularização dos métodos ágeis difundiu--se e muito o desenvolvimento
+Com a popularização dos métodos ágeis difundiu-se e muito o desenvolvimento
 orientado a testes (\textit{Test Driven Development}), onde há uma busca 
 constante em eliminar falhas de programação durante a codificação, com foco 
 principalmente em design, pois produzir um código testável implica em baixo 
-acoplamento, além do acréscimo de qualidade sobre produto de software.\\
+acoplamento, além do acréscimo de qualidade sobre o produto de software.\\
 Além dos testes unitários, há também a revisão de código, que integrado a um 
-sistema testes automatizados e um sistema de controle de versão obtem-se uma 
+sistema de testes automatizados e um sistema de controle de versão obtêm-se uma 
 metodologia de trabalho eficaz e que traz velocidade e segurança no 
-desenvolvimento de sistemas, principalmente em C/C++ em que há uma gama enorme 
+desenvolvimento de sistemas, principalmente em C/C++ onde há uma gama enorme 
 de plataformas e arquiteturas para esta linguagem.\\
 Este artigo apresentará uma proposta de workflow para desenvolvimento em C/C++ 
 baseado em TDD, utilizando \textit{pre-tested commits}, sendo possível 
@@ -84,21 +84,24 @@ antecipadamente no comportamento que a aplicação deve ter, antes mesmo de
 escrever algum código. Desde a implementação, o projeto terá um nível de 
 qualidade mais apurado, já que esta técnica força pensar em problemas e 
 suas soluções antes de qualquer código existir.\\
-Além disso, obtem--se o \textit{feedback} imediato a cada refatoração, 
-e também suprime o \textit{over--engineering}, ou seja, implementar mais do que
-o estritamente necessário.\\O feedback acontece a cada ciclo, dando uma margem 
-de segurança ao desenvolvedor, de o que está sendo implementado além de correto 
-é necessário.\\TDD pode ser aplicado tanto para pequenas partes que compõem um 
+Além disso, tem-se o \textit{feedback} imediato a cada refatoração, 
+e também a diminuição do \textit{over--engineering}, ou seja, 
+implementar mais do que o estritamente necessário.
+O feedback acontece a cada ciclo, dando uma margem 
+de segurança ao desenvolvedor de o que está sendo implementado além de correto 
+é necessário.\\
+TDD pode ser aplicado tanto para pequenas partes que compõem um 
 sistema (Teste Unitários) quanto para componentes (Testes de Integração), e 
 traz benefícios tanto em design quanto em performance, pois depende da 
-Arquitetura de Teste aplicada para garantir uma boa cobertura de testes, tem-se 
+arquitetura de teste aplicada para garantir uma boa cobertura de testes, com 
 um tempo relativamente menor na resolução de falhas do sistema total.\\
 Além de diminuir o custo na fase de manutenção do sistema, oferece também uma 
-margem de segurança maior aos desenvolvedores.\\Os testes automatizados também 
-podem funcionar como uma forma de documentação, pois estão descrevendo em 
-partes o comportamento do sistema, suas interfaces, métodos e arquitetura.\\
+margem de segurança maior aos desenvolvedores.\\
+Os testes automatizados também podem funcionar como uma forma de documentação, 
+pois estão descrevendo em partes o comportamento do sistema, suas interfaces, 
+métodos e arquitetura.\\
 TDD é entendido como um dos princípios da Extreme Programming (XP).\\
-Os principais benefícios do TDD são:
+Os principais benefícios:
 \begin{itemize}
 	\item
 		\textbf{Diminuição de falhas:} 
@@ -112,7 +115,7 @@ Os principais benefícios do TDD são:
 		\textbf{Documentação não mente:} 
 		Com testes bem estruturados, é possível analisar a qualidade da 
 		documentação. Testes bem estruturados trazem uma forma mais vísivel
-		através de um exemplo funcional, suprindo uma documentação excassa.
+		através de um exemplo funcional, suprindo uma documentação escassa.
 	\item
 		\textbf{Paz de espírito:} 
 		Um código exaustivamente testado com um conjunto abrangente 
@@ -152,9 +155,10 @@ Em termos de qualidade externa, pelo estudo, não houve diferença entre os dois
 métodos. Houveram sim, evidências de que a qualidade externa estaria mais 
 relacionada ao números de testes escritos do que quando estes 
 são escritos previamente.\\ 
-Segundo os autores, apesar do método Test-First por si só não aumentar a 
-qualidade, este pareceu ter um efeito positivo sobre a produtividade dos 
-desenvolvedores, possívelmente por causa dos seguintes fatores:
+Segundo os autores, apesar do método \textit{Test-First} por si só não 
+aumentar a qualidade, este pareceu ter um efeito positivo sobre a 
+produtividade dos desenvolvedores, 
+possivelmente por causa dos seguintes fatores:
 
 \begin{itemize}
 	\item
@@ -186,21 +190,22 @@ O estudo demonstra claramente uma qualidade maior ao utilizarmos
 selecionar um método, principalmente quando há uma equipe mais experiente que 
 saiba gerar produtividade unindo os dois métodos. Além disso, o risco da 
 abordagem \textit{Test-Last} está na perda do benefício da programação por 
-interação, ou seja, evoluir o software a partir do ponto de vista de como se 
+iteração, ou seja, evoluir o software a partir do ponto de vista de como se 
 espera que seja usado, e também a ocorrência em demasia de 
-\textit{over--engineering}, isto é, escrever código para coisas que talvez não 
+\textit{over-engineering}, isto é, escrever código para coisas que talvez não 
 sejam necessárias naquele momento. 
 
 \subsection{Testes Automatizados}	\label{sec:automatedTests}
 
 São uma ferramenta extremamente valiosa de feedback, 
 ajudando a garantir tanto a qualidade externa (aquela perceptível pelo usuário), 
-quanto à qualidade interna (aquela perceptível pelo desenvolvedor).\\
+quanto à qualidade interna, aquela perceptível pelo desenvolvedor.\\
 A facilidade de poder executar continuamente os testes permite a identificação 
 imediata de alterações indesejáveis no sistema. Por essa razão, 
 os testes existentes para um sistema também são conhecidos como 
-Testes de Regressão, pois asseguram que um sistema não irá regredir do ponto 
-atual em que se encontra. O acréscimo contínuo de funcionalidades pode ser 
+\textit{Testes de Regressão}, pois asseguram que um sistema não irá regredir 
+do ponto atual em que se encontra. 
+O acréscimo contínuo de funcionalidades pode ser 
 realizado sem medo de quebrar algo já estabilizado.\\
 Os testes também favorecem a prática saudável de refatoração, que consiste em 
 aplicar pequenas transformações na estrutura interna do software, preservando 
@@ -208,7 +213,7 @@ o comportamento externo, com o objetivo de melhorar o código, tornando-o mais
 legível e mais aderente às manutenções pelas quais deverá passar. 
 Entretanto é necessário a busca pelo equilíbrio da refatoração, que deve ser 
 disciplinada para manter a qualidade do código escrito.\\
-Deve-se observar que o Teste Unitário é a base para os Testes de Integração, 
+Deve-se observar que o teste unitário é a base para os testes de integração, 
 pois trazem um feedback imediato, encorajando o desenvolvedor a executá-los 
 mais frequentemente, até a execução de todos os testes do sistema em um 
 servidor de integração contínua.\\      
@@ -223,18 +228,19 @@ codificação.\\
 Conforme relatado em \cite{jones:07}, inspeções de código formais são cerca de 
 duas vezes tão eficiente quanto qualquer forma conhecida de testes para 
 encontrar profundamente falhas sutis de programação, e são o único método 
-conhecido que tem uma média acima de 80 por cento na eficiência de remoção de 
+conhecido que tem uma média acima de 80\% na eficiência de remoção de 
 defeitos.\\
 Infelizmente, há dificuldades em convencer desenvolvedores e gestores sobre 
-tais vantagens.Gestores preocupam-se sobre a demanta de tempo utilizada para 
-esta atividade, que conflita com o cronograma do projeto, sem claro considerar
-o ganho obtido pela busca não tardia de falhas de programação, por outro lado, 
-desenvolvedores sentem-se desconfortáveis com revisões de código, 
+tais vantagens. Gestores preocupam-se sobre a demanta de tempo utilizada para 
+esta atividade e com conflitos com o cronograma do projeto, sem claro observar
+mais atentamente ao ganho obtido pela busca não tardia de falhas de programação, 
+por outro lado, desenvolvedores sentem-se desconfortáveis com revisões de código, 
 principalmente por atingir seus egos e demonstrar suas falhas. 
-Aliado a testes unitários consisos e a rigorosas sessões de revisão de código, 
+Aliado a testes unitários concisos e a rigorosas sessões de revisão de código, 
 é possível concluir uma tarefa livre de falhas antecipamente a inclusão dela no 
-sistema através do controle de versão.\\
-Há alguns métodos utilizados para revisão de código.
+sistema de controle de versão.\\
+Conforme \cite{subramaniam:06} Há alguns métodos utilizados para revisão de 
+código, citados abaixo:
 \begin{itemize}
 	\item
 		\textbf{Revisão Tardia:}
@@ -248,14 +254,14 @@ Há alguns métodos utilizados para revisão de código.
 		\textbf{Jogo Pick-up:}
 		Assim que algum código é escrito, compilado, testado e pronto 
 		para o \textit{commit}, o código é capturado para análise por outro 
-		desenvolvedor. As revisão de \textit{pré--commit} são designados para 
-		serem rápidos e sem extensas discussões, o que garante um código é 
-		aceitável.Para eliminar quaisquer rotinas comportamentais ou vícios, o 
+		desenvolvedor. As revisão de \textit{pre-commit} são designados para 
+		serem rápidos e sem extensas discussões, o que garante um código
+		aceitável. Para eliminar quaisquer rotinas comportamentais ou vícios, o 
 		ideal é que a revisão seja realizada por desenvolvedores distintos a 
-		cada semana.
+		cada semana, através de um rodízio.
 	\item
 		\textbf{Programação em Par:}
-		Utilizar a programação sempre em duplas, onde um desenvolvedor fica no 
+		Utilizar a programação sempre em duplas, onde um desenvolvedor o 
 		conduz a programação, utlizando o teclado e um outro desenvolvedor 
 		senta-se ao lado e atua como navegador, indicando melhorias e falhas.
 		De vez em quando, alternam-se os papéis.
@@ -279,22 +285,24 @@ Outra técnica útil é utilizar um checklist para a revisão de código, por exemplo
 	\item 
 		É possível aplicar melhorias ou refatoração para melhorar o código?
 \end{itemize}
+
 Além disso, é possível utilizar ferramentas de análise de código, como por 
 exemplo, o \cite{website:gerrit}, que integradas ao sistema de 
 controle de versão executam revisões em grupo do tipo
-\textit{post--commit}, isto é, o código recém enviado ao repositório sofre uma 
-análise de um grupo de desenvolvedores, que aprovam ou não o código, 
-indicando melhorias e alterações.
+\textit{post-commit}, isto é, o código recém enviado ao repositório sofre uma 
+análise de um grupo de desenvolvedores, que aprovam ou não o código indicando 
+melhorias e alterações.
 
 \subsection{Pre-Tested Commits}	\label{sec:preTestedCommits}
 
 A proposta do \textit{pre-tested commit}, é dedicar um 
-\textit{repositório primário} ligado ao servidor de Integração Contínua para 
-que execute os testes unitários e de integração, antes de ir para o 
-repositório principal.\\
-Isto é necessário porque normalmente desenvolvedores não executam testes após 
-a conclusão de uma tarefa, enviando para o repositório uma possível falha.
-Este tipo de ação é justificada para um sistema muito complexo, com 
+repositório primário ou um \textit{branch} dedicado ao servidor de 
+integração contínua para que execute os testes unitários e de integração, 
+antes de ir para o repositório principal ou \textit{branch} principal.\\
+Isto é necessário porque há a possibilidade de desenvolvedores não executarem 
+testes unitários ou funcionais após a conclusão de uma tarefa, 
+enviando para o repositório uma possível falha.
+Este tipo de ação pode ser justificada para um sistema muito complexo, com 
 \textit{n} testes de integração, e que demandam muito tempo, até horas para 
 completar todo o processo de testes.\\
 Obviamente. é mandatório que o desenvolvedor execute seus testes unitários, 
