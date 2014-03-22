@@ -7,7 +7,30 @@
 \usepackage[brazil]{babel}   
 \usepackage[latin1]{inputenc}
 \usepackage{hyperref}
-     
+\usepackage{booktabs}
+
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{ %
+	language=C++,						% choose the language of the code
+	basicstyle=\footnotesize,			% the size of the fonts that are used for the code
+	numbers=left,						% where to put the line-numbers
+	numberstyle=\footnotesize,		% the size of the fonts that are used for the line-numbers
+	stepnumber=1,						% the step between two line-numbers. If it is 1 each line will be numbered
+	numbersep=5pt,						% how far the line-numbers are from the code
+	backgroundcolor=\color{white},	% choose the background color. You must add \usepackage{color}
+	showspaces=false,					% show spaces adding particular underscores
+	showstringspaces=false,			% underline spaces within strings
+	showtabs=false,					% show tabs within strings adding particular underscores
+	frame=single,						% adds a frame around the code
+	tabsize=2,							% sets default tabsize to 2 spaces
+	captionpos=b,						% sets the caption-position to bottom
+	breaklines=true,					% sets automatic line breaking
+	breakatwhitespace=false,			% sets if automatic breaks should only happen at whitespace
+	escapeinside={\%*}{*)}				% if you want to add a comment within your code
+}
+
 \sloppy
 
 \title{Workflow de desenvolvimento em C/C++ baseado em TDD. \\Pre-tested commits}
@@ -329,7 +352,7 @@ de ferramentas configuradas para tal função, como por exemplo a utilização do
 	\label{fig:workflow}
 \end{figure}
 
-O \textit{workflow} apresentado na (Figura~\ref{fig:workflow}) demonstra a 
+O \textit{workflow} apresentado na Figura~\ref{fig:workflow} demonstra a 
 integração entre o TDD e a utilização de \textit{pre-tested commits}, que pode
 ser configurado em um repositório separado, ou conforme a política de versionamento
 adotado, através de um \textit{branch} dedicado a availação e testes unitários e 
@@ -343,7 +366,7 @@ implementadas, sem gerar também impacto no repositório principal.\\
 	\label{fig:TDD}
 \end{figure}
 
-Na (Figura~\ref{fig:TDD}) encontra-se o teste no ambiente local do 
+Na Figura~\ref{fig:TDD} encontra-se o teste no ambiente local do 
 desenvolvedor, que é responsável por implementar os testes unitários, 
 executá-los, além de efetuar os testes funcionais para validação da tarefa.\\
 Uma metodologia sugerida, é criar um branch local para a resolução de falhas, 
@@ -373,14 +396,13 @@ merge do sistema de controle de versão Git. Segue o procedimento:
 		Enviar o código ao repositório: \texttt{git push origin}.
 \end{enumerate}
 
-The path of the righteous man is beset on all sides by the 
-iniquities of the selfish and the tyranny of evil men. 
-Blessed is he who, in the name of charity and good will, 
-shepherds the weak through the valley of darkness, 
-for he is truly his brother's keeper and the finder of lost children. 
-And I will strike down upon thee with great vengeance and furious 
-anger those who would attempt to poison and destroy My brothers. 
-And you will know My name is the Lord when I lay My vengeance upon thee.
+Já na Figura~\ref{fig:codeRevision} apresenta-se o workflow utilizado para 
+a execução dos testes integrados utiizando o Jenkins, e na próxima ação a 
+revisão de código pelos outros desenvolvedores utilizando o Gerrit.
+Após a votação, modificações caso necessário, e a aprovacão o código é enviado
+ao repositório ou \textit{branch} principal.\\
+Consequentemente após este ciclo, há um código muito mais estável e seguro 
+aplicado ao repositório principal.
 
 \begin{figure}[!htb]
 	\centering
@@ -388,34 +410,237 @@ And you will know My name is the Lord when I lay My vengeance upon thee.
 	\caption{Workflow Revisão de Código}
 	\label{fig:codeRevision}
 \end{figure}
-
-My money's in that office, right? 
-If she start giving me some bullshit about it ain't there, 
-and we got to go someplace else and get it, 
-I'm gonna shoot you in the head then and there. 
-Then I'm gonna shoot that bitch in the kneecaps, 
-find out where my goddamn money is. She gonna tell me too. 
-Hey, look at me when I'm talking to you, motherfucker. 
-You listen: we go in there, and that nigga Winston or 
-anybody else is in there, you the first motherfucker to get shot. You understand?
 	
 \section{Avaliação}		\label{sec:evaluation}
 
-Now that we know who you are, I know who I am. I'm not a mistake!
-It all makes sense! In a comic, you know how you can tell who the arch-villain's going to be? 
-He's the exact opposite of the hero.
-And most times they're friends, like you and me! I should've known way back when... 
-You know why, David? Because of the kids. 
-They called me Mr Glass.
+Escolhemos como referência para este trabalho demonstrar a utilização do 
+framework criado pelo Google para Testes Unitários para C/C++, o Google Test.
+Este framework é utilizado pela própria equipe do Google para testes unitários 
+em seus projetos em C/C++.\\
+Alguns relatados na página do projeto são:
+\begin{itemize}
+	\item Chromium: \url{http://www.chromium.org}
+	\item LLVM compiler: \url{http://llvm.org}
+	\item Protocol Buffers: \url{http://code.google.com/p/protobuf/}
+\end{itemize}
+
+Baseado na arquitetura xUnit, portável para diversas arquiteturas 
+(Linux, Mac OS X, Windows, Cygwin, Windows CE, e Symbian), 
+e as principais funcionalidades para execução de testes unitários são, 
+\textit{assertions}, \textit{death tests},  
+\textit{value- and type-parameterized tests} e 	
+integração com o Jenkins para teste contínuo através de um XML. 
+Uma outra característica muito interessante deste framework é que foi 
+projetado para ser leve (\textit{lightweight}) e com alta performance.\\
+Em relação aos \textit{asserts} a diferença básica entre eles é que no
+\verb!ASSERT_*! o teste é abortado ao encontrar uma diferença, e no \verb!EXPECT_*! 
+o teste continua, mas demonstra uma falha no relatório de testes.
+Alguns principais testes são baseados testes binários e testes de strings.\\
+
+\subsection{Caso de Uso}	\label{sec:useCase}
+
+Como caso de uso partimos para um exemplo simples de integração do 
+Google Test(C++) com um projeto em C. A grande vantagem deste framework é a 
+flexibilidade da linguagem atender as duas arquiteturas (C e C++), 
+e sendo possível utilizá-la em projetos de pequeno e grande porte, 
+e também atendendo aos desenvolvedores de sistemas embarcados.
+Outra ferramenta utilizada no projeto é o make que é utilitário 
+para verificar quais arquivos precisam ser compilados, além de automatizar o 
+link de alguns diretórios, por exemplo, o diretório de arquivos de header (*.h).\\
+O projeto tem a seguinte estrutura de diretórios:
+\begin{itemize}
+	\item \textit{include}: 
+		diretório com arquivos de header (*.h)
+	\item \textit{cadastro.h}: 
+		arquivo contendo os protótipos das funções do arquivo cadastro.c.
+	\item \textit{src}: 
+		diretório com arquivos de código fonte (*.c).
+	\item \textit{cadastro.c}: 
+		arquivo com as funções de cadastro.
+	\item \textit{main.c}: 
+		arquivo principal, obrigatório para projetos em C.
+	\item \textit{test}: 
+		diretório com arquivos com código de testes cpp.
+	\item \textit{cadastroTest.cpp}: 
+		arquivo com os testes das funções do arquivo cadastro.c.
+	\item \textit{main.cpp}: 
+		arquivo principal, obrigatório para utilização do Google Test.
+	\item \textit{Makefile}: 
+		responsável pela compilação dos arquivos de testes.
+	\item \textit{Makefile}: 
+		arquivo responsável por executar a compilação dos 
+		arquivos fontes, e arquivos de testes.
+\end{itemize}
+
+Para este exemplo, temos a seguinte regra:\\
+
+\begin{center}
+	\begin{tabular}{ | p{13cm} | }
+		\hline
+			Valor do Imóvel \\
+		\hline
+  			O itaú realizado o financiamento de imóveis residenciais a partir 
+			de \verb!R$ 62 mil!, sem limite máximo.
+			Foi criado um pequeno algoritmo que recebe o valor do financiamento, no 
+			formato de string, verificar se a string é válida (diferente de vazio), 
+			aplicando uma expressão regular para facilitar a validação da string, e 
+			verificar se o valor encontra-se acima de \verb!R$62 mil! 
+			(\verb!VALOR_IMOVEL_MIN!), 
+			retornando o valor já no formato float em caso de sucesso, 
+			ou o valor negativo  em caso de erro.\\
+		\hline
+	\end{tabular}
+\end{center}
+
+A partir da regra, temos a algoritmo do arquivo \textit{cadastro.c}:
+
+\newpage
+
+\begin{lstlisting}
+#include <string.h>
+#include <regex.h>
+
+#include "cadastro.h"
+
+#if (DEBUG >= 1)
+#define DEBUG_MESSAGE(fmt, args...)		(fprintf(stderr, fmt, ##args))
+#else
+#define DEBUG_MESSAGE(fmt, args...)
+#endif	/* (DEBUG >= 1) */
+
+int check_regex(const char *er, const char *txt)
+{
+	regex_t regex;
+	int ret;
+
+	/** verify string to verify */
+	if (!txt || !strlen(txt)) {
+		return -1;
+	}
+
+	/** verify regular expression */
+	if (!er || !strlen(er)) {
+		return -1;
+	}
+
+	regcomp(&regex, er, REG_EXTENDED|REG_NOSUB);
+	ret = regexec(&regex, txt,  0, NULL, 0);
+	regfree(&regex);
+
+	return ((ret != 0) ? -1 : 0);
+}
+
+float get_valor_imovel(const char * valor_imovel)
+{
+	float temp;
+	/* expressão regular para convesão de strings para float */
+	const char float_er[] = "[1-9][0-9]*\\.?[0-9]*([Ee][+-]?[0-9]+)?";
+
+	if (check_regex(float_er, valor_imovel) != 0) {
+		DEBUG_MESSAGE("\t\tvalor imóvel inválido %s\n", valor_imovel);
+		return -1;
+	}
+
+	temp = atof(valor_imovel);
+	if (temp < VALOR_IMOVEL_MIN) {
+		DEBUG_MESSAGE("\t\tvalor do imóvel (%0.2f) abaixo do valor mínimo\n", temp);
+		return -2;
+	}
+	return temp;
+}
+\end{lstlisting}
+
+\newpage
+
+Os testes aplicados sobre as funções contidas no arquivo cadastro.c, são colocados em um arquivo com o mesmo nome, com a extensão \_test.cpp, esta convenção serve para uma melhor visualização dos arquivos de testes unitários.\\
+Há duas funções de testes gerais, e dentro de cada uma há execução de diversos testes.
+É obrigatório a inclusão do header \verb!<gtest/gtest.h>!.
+A função \verb!EXPECT_FLOAT_EQ! verifica o retorno da função \verb!get_valor_imovel!, 
+igual a  \verb!R$ 65 mil!, conforme demonstrado no algoritmo abaixo:
+
+\begin{lstlisting}
+#include <gtest/gtest.h>
+
+#include "cadastro.h"
+
+TEST(cadastroTest, cadastroCheckRegexTest)
+{
+	const char float_er[] = "[1-9][0-9]*\\.?[0-9]*([Ee][+-]?[0-9]+)?";
+
+	EXPECT_EQ(0, check_regex(float_er, "65000.00"));
+	EXPECT_EQ(-1, check_regex(NULL, NULL));
+}
+
+TEST(cadastroTest, cadastroValorImovelTest)
+{
+	EXPECT_EQ(-1, get_valor_imovel(NULL));
+	EXPECT_EQ(-2, get_valor_imovel("6300.00"));
+
+	EXPECT_FLOAT_EQ(65000.00, get_valor_imovel("65000.00"));
+}
+\end{lstlisting}
+
+O projeto contem 2 arquivos de makefile, um arquivo encontra-se dentro do diretório test, e é executado para compilar os arquivos de testes.O arquivo Makefile na raiz do projeto compila o projeto (make all), e chama o arquivo Makefile contido no diretório de testes (make test).\\
+Uma observação, quando citamos 'compilar' pelo arquivo Makefile, na verdade, o script make é responsável por chamar o compilador repassando de forma correta os parâmetros, automatizando a tarefa de compilação.\\
+\newpage
+
+Abaixo o arquivo de compilação do diretório de Test.
+
+\begin{lstlisting}
+CPP=g++
+
+ALL_C	:= $(wildcard ../src/*.c)
+ALL_CPP	:= $(wildcard *.cpp)
+
+SOURCES	:= $(filter-out %main.c,$(ALL_C))
+OBJS	:= $(addprefix , $(SOURCES:.c=.o))
+OBJS	+= $(addprefix , $(ALL_CPP:.cpp=.o))
+
+CFLAGS	+= -fprofile-arcs -ftest-coverage
+CFLAGS  += -I../include 
+
+LDFLAGS += -lgtest -lgcov -lpthread -lgtest_main
+
+TARGET := json_test
+
+#	make all
+all: $(TARGET)
+        
+$(TARGET): $(OBJS)
+	@echo "[BIN] $@"
+	@$(CPP) $^ $(LDFLAGS) -o $@
+	@./$(TARGET)
+
+%.o: %.c
+	@echo "[CPP] $@"
+	@$(CPP) $(CFLAGS) -o $@ -c $<
+        
+%.o: %.cpp
+	@echo "[CPP] $@"
+	@$(CPP) $(CFLAGS) -o $@ -c $<
+
+clean:
+	@echo "rm -rf $(OBJS)"
+\end{lstlisting}
+
+\newpage
+
+Ao executar os testes temos:
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=1.0\textwidth]{makeTest.png}
+	\caption{Execução dos Testes Unitários}
+	\label{fig:makeTest}
+\end{figure}
 
 \section{Conclus\~ao}	\label{sec:conclusion}
 
-Well, the way they make shows is, they make one show. 
-That show's called a pilot. Then they show that show to the people who make shows, 
-and on the strength of that one show they decide if they're going to make more shows. 
-Some pilots get picked and become television programs. 
-Some don't, become nothing. 
-She starred in one of the ones that became nothing.
+Neste trabalho apresentamos como funciona um ciclo de desenvolvimento utilizando TDD e como ele resulta em melhores resultados através de um melhor entendimento prévio do problema, avanço incremental do código criado, mais confiança no código escrito e uma melhoria no design projeto de software onde há a busca por um baixo acoplamento para facilitar o desenvolvimento dos testes unitários.\\
+
+Para o uso do TDD são necessárias bibliotecas e ferramentas que possibilita a escrita dos testes e a sua execução. Neste trabalho apresentamos o Google Test, framework para as linguagens C e C++, que tem como vantagem ser leve, portável e gratuito. Detecta automaticamente os testes escritos, agilizando o desenvolvimento e evitando que sejam escritos testes que nunca serão executados. \\
+
+Através de um exemplo prático, mostramos como adotar uma estratégia de desenvolvimento dirigida a testes e - principalmente - que este processo não precisa ser burocrático e demorado. Com uma ferramenta simples, como o Google Test, em poucos minutos qualquer desenvolvedor pode começar a escrever testes e, a partir deles, o código propriamente dito.\\
 
 \newpage
 
