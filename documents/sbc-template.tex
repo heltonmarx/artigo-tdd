@@ -13,27 +13,30 @@
 \usepackage{listings}
 
 \lstset{ %
-	language=C++,						% choose the language of the code
-	basicstyle=\footnotesize,			% the size of the fonts that are used for the code
-	numbers=left,						% where to put the line-numbers
+	language=C++,					% choose the language of the code
+	basicstyle=\footnotesize,		% the size of the fonts that are used for the code
+	numbers=left,					% where to put the line-numbers
 	numberstyle=\footnotesize,		% the size of the fonts that are used for the line-numbers
-	stepnumber=1,						% the step between two line-numbers. If it is 1 each line will be numbered
-	numbersep=5pt,						% how far the line-numbers are from the code
+	stepnumber=1,					% the step between two line-numbers. If it is 1 each line will be numbered
+	numbersep=5pt,					% how far the line-numbers are from the code
 	backgroundcolor=\color{white},	% choose the background color. You must add \usepackage{color}
-	showspaces=false,					% show spaces adding particular underscores
+	showspaces=false,				% show spaces adding particular underscores
 	showstringspaces=false,			% underline spaces within strings
 	showtabs=false,					% show tabs within strings adding particular underscores
-	frame=single,						% adds a frame around the code
-	tabsize=2,							% sets default tabsize to 2 spaces
-	captionpos=b,						% sets the caption-position to bottom
-	breaklines=true,					% sets automatic line breaking
-	breakatwhitespace=false,			% sets if automatic breaks should only happen at whitespace
-	escapeinside={\%*}{*)}				% if you want to add a comment within your code
+	frame=single,					% adds a frame around the code
+	tabsize=2,						% sets default tabsize to 2 spaces
+	captionpos=b,					% sets the caption-position to bottom
+	breaklines=true,				% sets automatic line breaking
+	breakatwhitespace=false,		% sets if automatic breaks should only happen at whitespace
+	escapeinside={\%*}{*)}			% if you want to add a comment within your code
 }
 
 \sloppy
 
-\title{Workflow de desenvolvimento em C/C++ baseado em TDD. \\Pre-tested commits}
+\title{
+	Workflow de desenvolvimento em C/C++ baseado em TDD. \\
+	Utilizando pre-tested commits.
+}
 
 \author{Helton Luiz Marques\inst{1}} 
 
@@ -48,40 +51,42 @@
 \maketitle
 
 \begin{abstract}
-  This meta-paper describes the style to be used in articles and short papers
-  for SBC conferences. For papers in English, you should add just an abstract
-  while for the papers in Portuguese, we also ask for an abstract in
-  Portuguese (``resumo''). In both cases, abstracts should not have more than
-  10 lines and must be in the first page of the paper.
+	The purpose of this paper is present the concept of
+	Test Driven Development and the benefits it brings to 
+	developers. This methodology presents a code review 
+	for analysis and finding bugs, changes in the architecture of 
+	system, redeployment of existing features, 
+	eliminating the duplicity of codes and aesthetic improvements 
+	and standardization. Finally, it was present a development workflow 
+	in C / C + + based on TDD.
 \end{abstract}
      
 \begin{resumo} 
-	A proposta deste trabalho é apresentar o conceito de Test Driven Development,  
-	mostrar os benefícios que esta abordagem traz para os desenvolvedores, e 
-	também apresentar a revisão de código para análise e busca de falhas no 
-	código fonte, alterações na arquitetura do sistema, reimplementação de 
-	funcionalidades já existentes, duplicidade de códigos e melhorias de 
-	estética e padronização.
-	São apresentados os benefícios da utilização dessas metodologias e 
-	por fim um workflow de desenvolvimento em C/C++ baseado em TDD.
+	A proposta deste trabalho tem como objetivo abordar o conceito
+	de Test Driven Development e os benefícios que o mesmo traz para 
+	os desenvolvedores. Esta metodologia apresenta a revisão de código
+	para análise e busca de falhas, as alterações na arquitetura do 
+	sistema, a reimplementação de funcionalidades já existentes, 
+	a eliminação de duplicidade de códigos e as melhorias de estética
+	e padronização. Por fim, é apresentado um workflow de desenvolvimento
+	em C/C++ baseado em TDD.
 \end{resumo}
-
 
 \section{Introdução}
 
-Com a popularização dos métodos ágeis difundiu-se e muito o desenvolvimento
+Com a popularização dos métodos ágeis, difundiu-se e muito o desenvolvimento
 orientado a testes (\textit{Test Driven Development}), onde há uma busca 
 constante em eliminar falhas de programação durante a codificação, com foco 
-principalmente em design, pois produzir um código testável implica em baixo 
-acoplamento, além do acréscimo de qualidade sobre o produto de software.\\
+principalmente em design, produzindo um código testável com baixo acoplamento, 
+além do acréscimo de qualidade do software.\\
 Além dos testes unitários, há também a revisão de código, que integrado a um 
 sistema de testes automatizados e um sistema de controle de versão obtêm-se uma 
-metodologia de trabalho eficaz e que traz velocidade e segurança no 
+metodologia de trabalho eficaz, trazendo velocidade e segurança no 
 desenvolvimento de sistemas, principalmente em C/C++ onde há uma gama enorme 
-de plataformas e arquiteturas para esta linguagem.\\
+de plataformas e arquiteturas.\\
 Este artigo apresentará uma proposta de workflow para desenvolvimento em C/C++ 
 baseado em TDD, utilizando \textit{pre-tested commits}, sendo possível 
-expandí-lo a outras linguagens de programação.
+expandí-lo para outras linguagens de programação.
 
 \newpage
 
@@ -94,9 +99,9 @@ também conhecido como \textit{red-green-refactor} que consiste em criar um
 teste unitário que faça falhar o código desenvolvido (\textit{Red}), 
 alterar o código para que o teste passe da forma mais simples (\textit{Green}) 
 e refatorar o código com o objetivo de melhorar a sua estrutura e design 
-(\textit{Refactor}).
-Este ciclo deve ser repetido em pequenos incrementos, até que a funcionalidade 
-esteja pronta.\\Assim em cada iteração, a complexidade vai aumentado aos poucos, 
+(\textit{Refactor}).Este ciclo deve ser repetido em pequenos incrementos, 
+até que a funcionalidade esteja pronta.\\
+Assim em cada iteração, a complexidade vai aumentado aos poucos, 
 porém com a certeza que há corretude em cada implementação.\\
 Cada passo traz um benefício. Escrever o teste antes, prática conhecida 
 como \textit{Test First}, obrigatoriamente força com que o código produzido 
@@ -108,21 +113,19 @@ escrever algum código. Desde a implementação, o projeto terá um nível de
 qualidade mais apurado, já que esta técnica força pensar em problemas e 
 suas soluções antes de qualquer código existir.\\
 Além disso, tem-se o \textit{feedback} imediato a cada refatoração, 
-e também a diminuição do \textit{over--engineering}, ou seja, 
-implementar mais do que o estritamente necessário.
-O feedback acontece a cada ciclo, dando uma margem 
-de segurança ao desenvolvedor de o que está sendo implementado além de correto 
-é necessário.\\
+e a diminuição do \textit{over-engineering}, ou seja, implementar mais do 
+que é necessário. O feedback acontece a cada ciclo, dando uma margem 
+de segurança ao desenvolvedor 
+de o que está sendo implementado além de correto é necessário.\\
 TDD pode ser aplicado tanto para pequenas partes que compõem um 
 sistema (Teste Unitários) quanto para componentes (Testes de Integração), e 
 traz benefícios tanto em design quanto em performance, pois depende da 
 arquitetura de teste aplicada para garantir uma boa cobertura de testes, com 
 um tempo relativamente menor na resolução de falhas do sistema total.\\
 Além de diminuir o custo na fase de manutenção do sistema, oferece também uma 
-margem de segurança maior aos desenvolvedores.\\
-Os testes automatizados também podem funcionar como uma forma de documentação, 
-pois estão descrevendo em partes o comportamento do sistema, suas interfaces, 
-métodos e arquitetura.\\
+margem de segurança maior aos desenvolvedores. Funciona como uma 
+forma de documentação, pois estão os testes estão descrevendo em partes o 
+comportamento do sistema, suas interfaces, métodos e arquitetura.\\
 TDD é entendido como um dos princípios da Extreme Programming (XP).\\
 Os principais benefícios:
 \begin{itemize}
@@ -249,16 +252,17 @@ e os bugs serão descobertos de forma tardia no ciclo de desenvolvimento.
 O melhor período para se encontrar falhas em código fontes é durante a 
 codificação.\\
 Conforme relatado em \cite{jones:07}, inspeções de código formais são cerca de 
-duas vezes tão eficiente quanto qualquer forma conhecida de testes para 
+duas vezes tão eficientes quanto qualquer forma conhecida de testes para 
 encontrar profundamente falhas sutis de programação, e são o único método 
 conhecido que tem uma média acima de 80\% na eficiência de remoção de 
 defeitos.\\
 Infelizmente, há dificuldades em convencer desenvolvedores e gestores sobre 
 tais vantagens. Gestores preocupam-se sobre a demanta de tempo utilizada para 
-esta atividade e com conflitos com o cronograma do projeto, sem claro observar
-mais atentamente ao ganho obtido pela busca não tardia de falhas de programação, 
-por outro lado, desenvolvedores sentem-se desconfortáveis com revisões de código, 
-principalmente por atingir seus egos e demonstrar suas falhas. 
+esta atividade e possíveis conflitos com o cronograma do projeto, 
+sem claro observar mais atentamente o ganho obtido pela busca não tardia de 
+falhas de programação, por outro lado, desenvolvedores sentem-se 
+desconfortáveis com revisões de código, principalmente por atingir seus egos 
+e demonstrar suas falhas. 
 Aliado a testes unitários concisos e a rigorosas sessões de revisão de código, 
 é possível concluir uma tarefa livre de falhas antecipamente a inclusão dela no 
 sistema de controle de versão.\\
@@ -284,14 +288,14 @@ código, citados abaixo:
 		cada semana, através de um rodízio.
 	\item
 		\textbf{Programação em Par:}
-		Utilizar a programação sempre em duplas, onde um desenvolvedor o 
-		conduz a programação, utlizando o teclado e um outro desenvolvedor 
+		Utilizar a programação sempre em duplas, onde um desenvolvedor 
+		conduz a programação utlizando o teclado, e um outro desenvolvedor 
 		senta-se ao lado e atua como navegador, indicando melhorias e falhas.
 		De vez em quando, alternam-se os papéis.
 		Com isso, há um aumento de atenção e crítica sobre o desenvolvimento 
 		de uma funcionalidade.
-		O ideal é integração entre desenvolvedores mais experientes, 
-		com menos os experientes, para um aprendizado mútuo.
+		O ideal é a integração entre desenvolvedores mais experientes, 
+		com menos os experientes para um aprendizado mútuo.
 \end{itemize}
 
 Outra técnica útil é utilizar um checklist para a revisão de código, por exemplo:
@@ -314,26 +318,23 @@ exemplo, o \cite{website:gerrit}, que integradas ao sistema de
 controle de versão executam revisões em grupo do tipo
 \textit{post-commit}, isto é, o código recém enviado ao repositório sofre uma 
 análise de um grupo de desenvolvedores, que aprovam ou não o código indicando 
-melhorias e alterações.
+melhorias e alterações.\\
 
 \subsection{Pre-Tested Commits}	\label{sec:preTestedCommits}
 
 A proposta do \textit{pre-tested commit}, é dedicar um 
-repositório primário ou um \textit{branch} dedicado ao servidor de 
-integração contínua para que execute os testes unitários e de integração, 
-antes de ir para o repositório principal ou \textit{branch} principal.\\
-Isto é necessário porque há a possibilidade de desenvolvedores não executarem 
+repositório(\textit{branch}) ao servidor de integração contínua 
+para que sejam executados os testes unitários de integração antes de que as 
+alterções e melhorias de código sejam publicados no repositório principal.\\
+Isto é necessário porque há a possibilidade que desenvolvedores não executem os
 testes unitários ou funcionais após a conclusão de uma tarefa, 
-enviando para o repositório uma possível falha.
+incluindo no repositório principal uma possível falha crítica ao sistema.
 Este tipo de ação pode ser justificada para um sistema muito complexo, com 
-\textit{n} testes de integração, e que demandam muito tempo, até horas para 
-completar todo o processo de testes.\\
-Obviamente. é mandatório que o desenvolvedor execute seus testes unitários, 
-mas há também, uma possibilidade que seus testes não cubram uma falha gerada 
-acidentalmente em outra parte do sistema. 
-Portanto, para que não ocorra quebra do repositório principal o 
-\textit{pre-tested commit} é utilizado.\\
-A utilização dele está fortemente ligado ao sistema de controle de versão, 
+testes de integração que demandam muito tempo ou muito complexos.\\ 
+Há também uma possibilidade que testes implementados não cubram uma falha 
+gerada acidentalmente em outra parte do sistema. Portanto, para que não ocorra 
+quebra do repositório principal o \textit{pre-tested commit} é utilizado ,e  ele 
+está fortemente ligado ao sistema de controle de versão, 
 como o \cite{website:teamcity} ou a um conjunto 
 de ferramentas configuradas para tal função, como por exemplo a utilização do 
 \cite{website:git}(SCV), 
@@ -354,10 +355,9 @@ de ferramentas configuradas para tal função, como por exemplo a utilização do
 
 O \textit{workflow} apresentado na Figura~\ref{fig:workflow} demonstra a 
 integração entre o TDD e a utilização de \textit{pre-tested commits}, que pode
-ser configurado em um repositório separado, ou conforme a política de versionamento
-adotado, através de um \textit{branch} dedicado a availação e testes unitários e 
-de integração, para trazer uma garantia do funcionamento pleno das tarefas 
-implementadas, sem gerar também impacto no repositório principal.\\
+ser configurado em um repositório separado dedicado para a availação e 
+testes unitários e de integração, trazendo uma garantia do funcionamento pleno 
+das tarefas implementadas, não gerando um impacto no repositório principal.\\
 
 \begin{figure}[!htb]
 	\centering
@@ -399,8 +399,8 @@ merge do sistema de controle de versão Git. Segue o procedimento:
 Já na Figura~\ref{fig:codeRevision} apresenta-se o workflow utilizado para 
 a execução dos testes integrados utiizando o Jenkins, e na próxima ação a 
 revisão de código pelos outros desenvolvedores utilizando o Gerrit.
-Após a votação, modificações caso necessário, e a aprovacão o código é enviado
-ao repositório ou \textit{branch} principal.\\
+Após a votação, modificações se necessário e a aprovacão o código é enviado
+ao repositório principal.\\
 Consequentemente após este ciclo, há um código muito mais estável e seguro 
 aplicado ao repositório principal.
 
@@ -413,10 +413,9 @@ aplicado ao repositório principal.
 	
 \section{Avaliação}		\label{sec:evaluation}
 
-Escolhemos como referência para este trabalho demonstrar a utilização do 
+A avaliação realizado foi através da utilização do 
 framework criado pelo Google para Testes Unitários para C/C++, o Google Test.
-Este framework é utilizado pela própria equipe do Google para testes unitários 
-em seus projetos em C/C++.\\
+Este framework é utilizado pela própria equipe do Google em seus projetos em C/C++.\\
 Alguns relatados na página do projeto são:
 \begin{itemize}
 	\item Chromium: \url{http://www.chromium.org}
@@ -424,18 +423,16 @@ Alguns relatados na página do projeto são:
 	\item Protocol Buffers: \url{http://code.google.com/p/protobuf/}
 \end{itemize}
 
-Baseado na arquitetura xUnit, portável para diversas arquiteturas 
+Baseado na arquitetura \cite{website:xunit}, portável para diversas arquiteturas 
 (Linux, Mac OS X, Windows, Cygwin, Windows CE, e Symbian), 
-e as principais funcionalidades para execução de testes unitários são, 
-\textit{assertions}, \textit{death tests},  
-\textit{value- and type-parameterized tests} e 	
-integração com o Jenkins para teste contínuo através de um XML. 
+tendo como principais recursos o testes do tipo  \textit{assertions}, 
+\textit{death tests}, \textit{value- and type-parameterized tests}, 
+e a integração com o Jenkins para teste contínuo através de XML. 
 Uma outra característica muito interessante deste framework é que foi 
 projetado para ser leve (\textit{lightweight}) e com alta performance.\\
 Em relação aos \textit{asserts} a diferença básica entre eles é que no
 \verb!ASSERT_*! o teste é abortado ao encontrar uma diferença, e no \verb!EXPECT_*! 
-o teste continua, mas demonstra uma falha no relatório de testes.
-Alguns principais testes são baseados testes binários e testes de strings.\\
+o teste continua, demonstrando uma falha no relatório de testes.
 
 \subsection{Caso de Uso}	\label{sec:useCase}
 
@@ -443,10 +440,10 @@ Como caso de uso partimos para um exemplo simples de integração do
 Google Test(C++) com um projeto em C. A grande vantagem deste framework é a 
 flexibilidade da linguagem atender as duas arquiteturas (C e C++), 
 e sendo possível utilizá-la em projetos de pequeno e grande porte, 
-e também atendendo aos desenvolvedores de sistemas embarcados.
-Outra ferramenta utilizada no projeto é o make que é utilitário 
+sendo possível utilizá-lo em projeto de sistemas embarcados.
+Outra ferramenta utilizada no projeto é o \textit{make} que é um utilitário 
 para verificar quais arquivos precisam ser compilados, além de automatizar o 
-link de alguns diretórios, por exemplo, o diretório de arquivos de header (*.h).\\
+link de alguns diretórios, como por exemplo, o diretório de arquivos de header (*.h).\\
 O projeto tem a seguinte estrutura de diretórios:
 \begin{itemize}
 	\item \textit{include}: 
@@ -472,7 +469,7 @@ O projeto tem a seguinte estrutura de diretórios:
 		arquivos fontes, e arquivos de testes.
 \end{itemize}
 
-Para este exemplo, temos a seguinte regra:\\
+Para o exemplo temos a seguinte regra:\\
 
 \begin{center}
 	\begin{tabular}{ | p{13cm} | }
@@ -492,7 +489,7 @@ Para este exemplo, temos a seguinte regra:\\
 	\end{tabular}
 \end{center}
 
-A partir da regra, temos a algoritmo do arquivo \textit{cadastro.c}:
+A partir da regra temos a algoritmo implementado: 
 
 \newpage
 
@@ -552,11 +549,13 @@ float get_valor_imovel(const char * valor_imovel)
 
 \newpage
 
-Os testes aplicados sobre as funções contidas no arquivo cadastro.c, são colocados em um arquivo com o mesmo nome, com a extensão \_test.cpp, esta convenção serve para uma melhor visualização dos arquivos de testes unitários.\\
+Os testes aplicados sobre as funções contidas no arquivo cadastro.c, 
+são colocados em um arquivo com o mesmo nome, porém com a extensão \_test.cpp, 
+esta convenção serve para uma melhor visualização dos arquivos de testes unitários.\\
 Há duas funções de testes gerais, e dentro de cada uma há execução de diversos testes.
 É obrigatório a inclusão do header \verb!<gtest/gtest.h>!.
 A função \verb!EXPECT_FLOAT_EQ! verifica o retorno da função \verb!get_valor_imovel!, 
-igual a  \verb!R$ 65 mil!, conforme demonstrado no algoritmo abaixo:
+igual a \verb!R$ 65 mil!, conforme demonstrado no algoritmo abaixo:
 
 \begin{lstlisting}
 #include <gtest/gtest.h>
@@ -579,10 +578,6 @@ TEST(cadastroTest, cadastroValorImovelTest)
 	EXPECT_FLOAT_EQ(65000.00, get_valor_imovel("65000.00"));
 }
 \end{lstlisting}
-
-O projeto contem 2 arquivos de makefile, um arquivo encontra-se dentro do diretório test, e é executado para compilar os arquivos de testes.O arquivo Makefile na raiz do projeto compila o projeto (make all), e chama o arquivo Makefile contido no diretório de testes (make test).\\
-Uma observação, quando citamos 'compilar' pelo arquivo Makefile, na verdade, o script make é responsável por chamar o compilador repassando de forma correta os parâmetros, automatizando a tarefa de compilação.\\
-\newpage
 
 Abaixo o arquivo de compilação do diretório de Test.
 
@@ -636,11 +631,23 @@ Ao executar os testes temos:
 
 \section{Conclus\~ao}	\label{sec:conclusion}
 
-Neste trabalho apresentamos como funciona um ciclo de desenvolvimento utilizando TDD e como ele resulta em melhores resultados através de um melhor entendimento prévio do problema, avanço incremental do código criado, mais confiança no código escrito e uma melhoria no design projeto de software onde há a busca por um baixo acoplamento para facilitar o desenvolvimento dos testes unitários.\\
+Neste trabalho apresentamos como funciona um ciclo de desenvolvimento 
+utilizando TDD e como ele resulta em melhores resultados através de um melhor 
+entendimento prévio do problema, avanço incremental do código criado, 
+mais confiança no código escrito e uma melhoria no design projeto de software 
+onde há a busca por um baixo acoplamento para facilitar o desenvolvimento dos 
+testes unitários.\\
+Para o uso do TDD são necessárias bibliotecas e ferramentas que possibilita a 
+escrita dos testes e a sua execução. Neste trabalho apresentamos o Google Test, 
+framework para as linguagens C e C++, que tem como vantagem ser leve, portável 
+e gratuito. Detecta automaticamente os testes escritos, agilizando o 
+desenvolvimento e evitando que sejam escritos testes que nunca serão executados.\\
 
-Para o uso do TDD são necessárias bibliotecas e ferramentas que possibilita a escrita dos testes e a sua execução. Neste trabalho apresentamos o Google Test, framework para as linguagens C e C++, que tem como vantagem ser leve, portável e gratuito. Detecta automaticamente os testes escritos, agilizando o desenvolvimento e evitando que sejam escritos testes que nunca serão executados. \\
-
-Através de um exemplo prático, mostramos como adotar uma estratégia de desenvolvimento dirigida a testes e - principalmente - que este processo não precisa ser burocrático e demorado. Com uma ferramenta simples, como o Google Test, em poucos minutos qualquer desenvolvedor pode começar a escrever testes e, a partir deles, o código propriamente dito.\\
+Através de um exemplo prático, mostramos como adotar uma estratégia de 
+desenvolvimento dirigida a testes e - principalmente - que este processo não 
+precisa ser burocrático e demorado. Com uma ferramenta simples, 
+como o Google Test, em poucos minutos qualquer desenvolvedor pode começar a 
+escrever testes e, a partir deles, o código propriamente dito.\\
 
 \newpage
 

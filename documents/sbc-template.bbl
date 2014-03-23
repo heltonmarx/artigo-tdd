@@ -35,4 +35,7 @@ Subramaniam, Hunt (2006).
 \newblock Gerrit Code Review
 \newblock https://code.google.com/p/gerrit/
 
+\bibitem{xUnit}{website:xunit}
+\newblock xUnit.net is a free, open source, community-focused unit testing tool for the .NET Framework
+\newblock https://github.com/xunit/xunit
 \end{thebibliography}
