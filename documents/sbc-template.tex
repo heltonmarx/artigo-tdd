@@ -489,7 +489,7 @@ Para o exemplo temos a seguinte regra:\\
 	\end{tabular}
 \end{center}
 
-A partir da regra temos a algoritmo implementado: 
+A partir da regra temos o algoritmo: 
 
 \newpage
 
@@ -579,6 +579,8 @@ TEST(cadastroTest, cadastroValorImovelTest)
 }
 \end{lstlisting}
 
+\newpage
+
 Abaixo o arquivo de compilação do diretório de Test.
 
 \begin{lstlisting}
@@ -618,9 +620,8 @@ clean:
 	@echo "rm -rf $(OBJS)"
 \end{lstlisting}
 
-\newpage
-
-Ao executar os testes temos:
+Na Figura~\ref{fig:makeTest} temos o resultado dos testes a partir da ferramenta
+Google Test, que indica que todos os testes foram executados com sucesso
 
 \begin{figure}[!htb]
 	\centering
@@ -629,9 +630,11 @@ Ao executar os testes temos:
 	\label{fig:makeTest}
 \end{figure}
 
+\newpage
+
 \section{Conclus\~ao}	\label{sec:conclusion}
 
-Neste trabalho apresentamos como funciona um ciclo de desenvolvimento 
+Neste trabalho apresenta o funcionamento de um ciclo de desenvolvimento 
 utilizando TDD e como ele resulta em melhores resultados através de um melhor 
 entendimento prévio do problema, avanço incremental do código criado, 
 mais confiança no código escrito e uma melhoria no design projeto de software 
@@ -642,8 +645,7 @@ escrita dos testes e a sua execução. Neste trabalho apresentamos o Google Test,
 framework para as linguagens C e C++, que tem como vantagem ser leve, portável 
 e gratuito. Detecta automaticamente os testes escritos, agilizando o 
 desenvolvimento e evitando que sejam escritos testes que nunca serão executados.\\
-
-Através de um exemplo prático, mostramos como adotar uma estratégia de 
+Através de um exemplo prático, demonstra-se como adotar uma estratégia de 
 desenvolvimento dirigida a testes e - principalmente - que este processo não 
 precisa ser burocrático e demorado. Com uma ferramenta simples, 
 como o Google Test, em poucos minutos qualquer desenvolvedor pode começar a 
